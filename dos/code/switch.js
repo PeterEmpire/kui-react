@@ -1,11 +1,11 @@
 let code = {}
 
-code.base = `import { Switch } from 'kui-react';
+code.base = `import { Switch } from 'react-kui';
 ReactDOM.render() {
   return (<Switch />)
 }`
 
-code.theme = `import { Switch } from 'kui-react';
+code.theme = `import { Switch } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -17,12 +17,12 @@ ReactDOM.render() {
   )
 }`
 
-code.text = `import { Switch } from 'kui-react';
+code.text = `import { Switch } from 'react-kui';
 ReactDOM.render() {
   return (<Switch value={false} trueText="是" falseText="否"/>)
 }`
 
-code.disabled = `import { Switch } from 'kui-react';
+code.disabled = `import { Switch } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

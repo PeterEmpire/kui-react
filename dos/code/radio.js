@@ -1,6 +1,6 @@
 let code = {}
 
-code.base=`import { Radio } from 'kui-react';
+code.base=`import { Radio } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -22,7 +22,7 @@ ReactDOM.render() {
   )
 }`
 
-code.disabled = `import { Radio } from 'kui-react';
+code.disabled = `import { Radio } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -31,7 +31,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.group = `import { Radio } from 'kui-react';
+code.group = `import { Radio } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

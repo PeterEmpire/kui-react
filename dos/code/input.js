@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Input } from 'kui-react';
+code.base = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -10,7 +10,7 @@ ReactDOM.render() {
   )
 }`
 
-code.clearable = `import { Input } from 'kui-react';
+code.clearable = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -19,7 +19,7 @@ ReactDOM.render() {
   )
 }`
 
-code.withIcon = `import { Input } from 'kui-react';
+code.withIcon = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -29,7 +29,7 @@ ReactDOM.render() {
   )
 }`
 
-code.size = `import { Input } from 'kui-react';
+code.size = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -40,7 +40,7 @@ ReactDOM.render() {
 }`
 
 
-code.textArea = `import { Input } from 'kui-react';
+code.textArea = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

@@ -23,6 +23,9 @@ module.exports = merge(webpackBaseConfig, {
         library: 'kui-react',
         libraryTarget: 'umd',
     },
+    performance: {
+        hints : false
+    },
     module: {
         rules: [
             {

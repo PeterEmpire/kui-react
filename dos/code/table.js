@@ -1,6 +1,6 @@
 let code = {}
 
-code.base =`import { Button, Table ,Poptip } from 'kui-react';
+code.base =`import { Button, Table ,Poptip } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

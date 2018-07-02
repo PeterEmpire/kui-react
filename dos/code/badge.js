@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Badge } from 'kui-react';
+code.base = `import { Badge } from 'react-kui';
 ReactDOM.render() {
   return (
     <Badge count="3">
@@ -9,7 +9,7 @@ ReactDOM.render() {
   )
 }`
 
-code.dot = `import { Badge } from 'kui-react';
+code.dot = `import { Badge } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -26,7 +26,7 @@ ReactDOM.render() {
   )
 }`
 
-code.maxCount = `import { Badge } from 'kui-react';
+code.maxCount = `import { Badge } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -40,7 +40,7 @@ ReactDOM.render() {
   )
 }`
 
-code.color = `import { Badge } from 'kui-react';
+code.color = `import { Badge } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -54,7 +54,7 @@ ReactDOM.render() {
   )
 }`
 
-code.badge = `import { Badge } from 'kui-react';
+code.badge = `import { Badge } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -64,7 +64,7 @@ ReactDOM.render() {
   )
 }`
 
-code.other = `import { Badge } from 'kui-react';
+code.other = `import { Badge } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

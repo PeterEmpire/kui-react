@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Icon } from 'kui-react';
+code.base = `import { Icon } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Tag } from 'kui-react';
+code.base = `import { Tag } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -12,7 +12,7 @@ ReactDOM.render() {
   )
 }`
 
-code.color = `import { Tag } from 'kui-react';
+code.color = `import { Tag } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -27,7 +27,7 @@ ReactDOM.render() {
 }`
 
 
-code.custom=`import { Tag } from 'kui-react';
+code.custom=`import { Tag } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

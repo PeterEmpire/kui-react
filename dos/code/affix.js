@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Affix } from 'kui-react';
+code.base = `import { Affix } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -14,7 +14,7 @@ ReactDOM.render() {
   )
 }`
 
-code.offset = `import { Affix } from 'kui-react';
+code.offset = `import { Affix } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -28,7 +28,7 @@ ReactDOM.render() {
   )
 }`
 
-code.callback = `import { Affix ,Message} from 'kui-react';
+code.callback = `import { Affix ,Message} from 'react-kui';
 onChange(v) {
   if (v) {
       Message.success('当前状态：' + v)

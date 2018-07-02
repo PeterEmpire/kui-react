@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Poptip ,Button} from 'kui-react';
+code.base = `import { Poptip ,Button} from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -13,7 +13,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.position = `import { Poptip ,Button} from 'kui-react';
+code.position = `import { Poptip ,Button} from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -64,7 +64,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.slot = `import { Poptip ,Button} from 'kui-react';
+code.slot = `import { Poptip ,Button} from 'react-kui';
 ReactDOM.render() {
   let content = (
     <div slot="content" className="k-table k-table-border">
@@ -99,7 +99,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.confirm = `import { Poptip ,Button} from 'kui-react';
+code.confirm = `import { Poptip ,Button} from 'react-kui';
 ok() {
   Message.success('你点了确定')
 }

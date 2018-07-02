@@ -1,13 +1,13 @@
 let code = {}
 
-code.base = `import { Message } from 'kui-react';
+code.base = `import { Message } from 'react-kui';
 ReactDOM.render() {
   return (
     <Button onClick={()=>Message.info("普通提示")} type="primary">普通提示 </Button>
   )
 }`
 
-code.type = `import { Message } from 'kui-react';
+code.type = `import { Message } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -18,7 +18,7 @@ ReactDOM.render() {
   )
 }`
 
-code.time = `import { Message } from 'kui-react';
+code.time = `import { Message } from 'react-kui';
 config() {
   Message.config({
     type: "info",

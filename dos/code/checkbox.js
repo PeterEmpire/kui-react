@@ -1,6 +1,6 @@
 let code = {}
 
-code.base=`import { Checkbox } from 'kui-react';
+code.base=`import { Checkbox } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -23,7 +23,7 @@ ReactDOM.render() {
 }`
 code.disabled = ` `
 
-code.group =`import { Checkbox } from 'kui-react';
+code.group =`import { Checkbox } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -58,7 +58,7 @@ ReactDOM.render() {
 }
 `
 
-code.checkAll =`import { Checkbox } from 'kui-react';
+code.checkAll =`import { Checkbox } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

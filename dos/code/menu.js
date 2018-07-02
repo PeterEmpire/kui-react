@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Menu } from 'kui-react';
+code.base = `import { Menu } from 'react-kui';
 const SubMenu = Menu.SubMenu
 constructor(props) {
   super(props)
@@ -40,7 +40,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.theme = `import { Menu } from 'kui-react';
+code.theme = `import { Menu } from 'react-kui';
 const SubMenu = Menu.SubMenu
 ReactDOM.render() {
   return (

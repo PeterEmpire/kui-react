@@ -8,7 +8,7 @@ export default class start extends React.Component {
       <h3>安装</h3>
       <p>使用npm方式安装</p>
       <Code lang="js javascript">
-      npm install kui-react
+      npm install react-kui
       </Code>
       <h3>使用</h3>
       <Code lang="js javascript">

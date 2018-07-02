@@ -1,5 +1,5 @@
 let code = {}
-code.base = `import { Card } from 'kui-react';
+code.base = `import { Card } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -18,7 +18,7 @@ ReactDOM.render() {
   )
 }`
 
-code.border = `import { Card } from 'kui-react';
+code.border = `import { Card } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

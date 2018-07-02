@@ -1,5 +1,5 @@
 {
-  "name": "kui-react",
+  "name": "react-kui",
   "version": "1.0.0",
   "description": "A UI for react",
   "main": "dist/k-ui.js",
@@ -28,6 +28,7 @@
     "kui",
     "kyui",
     "react",
+    "react kui",
     "react ui",
     "component",
     "components",

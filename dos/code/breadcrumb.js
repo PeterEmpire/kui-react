@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Breadcrumb } from 'kui-react';
+code.base = `import { Breadcrumb } from 'react-kui';
 const Item = Breadcrumb.Item
 ReactDOM.render() {
   return (
@@ -14,7 +14,7 @@ ReactDOM.render() {
   )
 }`
 
-code.icon = `import { Breadcrumb } from 'kui-react';
+code.icon = `import { Breadcrumb } from 'react-kui';
 const Item = Breadcrumb.Item
 ReactDOM.render() {
   return (
@@ -28,7 +28,7 @@ ReactDOM.render() {
   )
 }`
 
-code.separator = `import { Breadcrumb } from 'kui-react';
+code.separator = `import { Breadcrumb } from 'react-kui';
 const Item = Breadcrumb.Item
 ReactDOM.render() {
   return (

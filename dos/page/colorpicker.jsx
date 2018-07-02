@@ -6,7 +6,7 @@ export default class colorpicker extends React.Component {
     super(props)
     this.state = {
       color: "#eeece1",
-      code: `import {ColorPicker} from 'kui-react'
+      code: `import {ColorPicker} from 'react-kui'
 constructor(props) {
   super(props)
   this.state = {

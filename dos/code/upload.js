@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Upload ，Button } from 'kui-react';
+code.base = `import { Upload ，Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -11,7 +11,7 @@ ReactDOM.render() {
   )
 }`
 
-code.disabled = `import { Upload ，Button } from 'kui-react';
+code.disabled = `import { Upload ，Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -21,7 +21,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.withData = `import { Upload ，Button } from 'kui-react';
+code.withData = `import { Upload ，Button } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -38,7 +38,7 @@ ReactDOM.render() {
   )
 }`
 
-code.mode = `import { Upload ，Button ，Message } from 'kui-react';
+code.mode = `import { Upload ，Button ，Message } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

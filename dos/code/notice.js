@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Notice } from 'kui-react';
+code.base = `import { Notice } from 'react-kui';
 info() {
   Notice.open({
     title: "通知的标题",
@@ -16,7 +16,7 @@ ReactDOM.render() {
   )
 }`
 
-code.withIcon = `import { Notice } from 'kui-react';
+code.withIcon = `import { Notice } from 'react-kui';
 notices(type) {
   Notice[type]({
     title: "通知的标题",

@@ -26,6 +26,9 @@ module.exports = merge(webpackBaseConfig, {
     chunkFilename: 'js/[name].[chunkhash:5].js',
     libraryTarget: 'umd',
   },
+  performance: {
+    hints: false
+  },
   module: {
     rules: [
       // {
@@ -74,7 +77,7 @@ module.exports = merge(webpackBaseConfig, {
       // 生成html文件的名字，路径和生产环境下的不同，要与修改后的publickPath相结合，否则开启服务器后页面空白
       filename: 'index.html',
       // 源文件，路径相对于本文件所在的位置 
-      favicon: path.join(__dirname, '../dos/assets/kui-react.png'),
+      template: path.resolve(__dirname, '../dos/index.html'),
       // 需要引入entry里面的哪几个入口，如果entry里有公共模块，记住一定要引入
       // chunks: ['index', 'vendors'],
       // 要把<script>标签插入到页面哪个标签里(body|true|head|false)

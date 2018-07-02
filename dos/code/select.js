@@ -1,6 +1,6 @@
 let code = {}
 
-code.base=`import { Select } from 'kui-react';
+code.base=`import { Select } from 'react-kui';
 const Option = Select.Option
 constructor(props) {
   super(props)
@@ -37,7 +37,7 @@ ReactDOM.render() {
   )
 }`
 
-code.size=`import { Select } from 'kui-react';
+code.size=`import { Select } from 'react-kui';
 const Option = Select.Option
 constructor(props) {
   super(props)
@@ -69,7 +69,7 @@ ReactDOM.render() {
   )
 }`
 
-code.clearable =`import { Select } from 'kui-react';
+code.clearable =`import { Select } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -100,7 +100,7 @@ ReactDOM.render() {
   )
 }`
 
-code.search=`import { Select } from 'kui-react';
+code.search=`import { Select } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -109,7 +109,7 @@ ReactDOM.render() {
   )
 }`
 
-code.disabled=`import { Input } from 'kui-react';
+code.disabled=`import { Input } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

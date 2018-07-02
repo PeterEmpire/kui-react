@@ -1,10 +1,10 @@
 let code = {}
-code.base = `import { Input } from 'kui-react';
+code.base = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (<BackTop></BackTop>)
 }`
 
-code.custom = `import { Input } from 'kui-react';
+code.custom = `import { Input } from 'react-kui';
 const style = {
   background: '#2d94ff',
   height: '40px',

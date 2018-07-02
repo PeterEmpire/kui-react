@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Row , Col } from 'kui-react';
+code.base = `import { Row , Col } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -23,7 +23,7 @@ ReactDOM.render() {
   )
 }`
 
-code.gutter = `import { Row , Col } from 'kui-react';
+code.gutter = `import { Row , Col } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -45,7 +45,7 @@ ReactDOM.render() {
   )
 }`
 
-code.offset = `import { Row , Col } from 'kui-react';
+code.offset = `import { Row , Col } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

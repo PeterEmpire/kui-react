@@ -1,6 +1,6 @@
 let code = {}
 
-code.base =`import { Form,Input,Select,DatePicker,Radio,Checkbox,Switch,Button } from 'kui-react';
+code.base =`import { Form,Input,Select,DatePicker,Radio,Checkbox,Switch,Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <Form labelWidth="80" labelAlign={labelAlign}>
@@ -45,7 +45,7 @@ ReactDOM.render() {
   )
 }`
 
-code.invalid =`import { Form,Input,Select,DatePicker,Radio,Checkbox,Switch,Button } from 'kui-react'
+code.invalid =`import { Form,Input,Select,DatePicker,Radio,Checkbox,Switch,Button } from 'react-kui'
 constructor(props) {
   super(props)
   this.state = {

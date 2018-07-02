@@ -1,7 +1,7 @@
 let code = {}
 
 code.base = `
-import { Steps } from 'kui-react';
+import { Steps } from 'react-kui';
 const Step = Steps.Step
 ReactDOM.render() {
   return (<Steps current="1">
@@ -11,7 +11,7 @@ ReactDOM.render() {
 </Steps>)
 }`
 
-code.mini = `import { Steps } from 'kui-react';
+code.mini = `import { Steps } from 'react-kui';
 const Step = Steps.Step
 ReactDOM.render() {
   return (<Steps current="1" mini>
@@ -21,7 +21,7 @@ ReactDOM.render() {
 </Steps>) 
 }`
 
-code.icon = `import { Steps } from 'kui-react';
+code.icon = `import { Steps } from 'react-kui';
 const Step = Steps.Step
 ReactDOM.render() {
   return (<Steps current="1">
@@ -31,7 +31,7 @@ ReactDOM.render() {
 </Steps>)
 }`
 
-code.test = `import { Steps } from 'kui-react';
+code.test = `import { Steps } from 'react-kui';
 const Step = Steps.Step
 constructor(props) {
   super(props)
@@ -57,7 +57,7 @@ ReactDOM.render() {
   <Button onClick={this.setStep.bind(this, 'prev')}>上一步</Button>) 
 }`
 
-code.status = `import { Steps } from 'kui-react';
+code.status = `import { Steps } from 'react-kui';
 const Step = Steps.Step
 ReactDOM.render() {
   return (<Steps current="1" status="error">
@@ -68,7 +68,7 @@ ReactDOM.render() {
 </Steps>) 
 }`
 
-code.vertical = `import { Steps } from 'kui-react';
+code.vertical = `import { Steps } from 'react-kui';
 const Step = Steps.Step
 ReactDOM.render() {
   return (<Steps current="1"  vertical>

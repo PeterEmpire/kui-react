@@ -1,6 +1,6 @@
 let code = {}
 
-code.useInRouter = `import { Input } from 'kui-react';
+code.useInRouter = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -8,7 +8,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.useInAjax = `import { Input } from 'kui-react';
+code.useInAjax = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -16,7 +16,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.test = `import { Input } from 'kui-react';
+code.test = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -24,7 +24,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.theme = `import { Input } from 'kui-react';
+code.theme = `import { Input } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

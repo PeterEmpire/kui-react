@@ -56,7 +56,7 @@ export default class Layout extends Kui {
                     <Menu style={{ float: 'right' }} mode="horizontal" activeName="/install" onSelect={(path) => this.routerChange(path)}>
                         <Menu.Item name="/" icon="home">首页</Menu.Item>
                         <Menu.Item name="/install" icon="ios-settings-strong">组件</Menu.Item>
-                        <Menu.Item name="https://github.com/chuchur/kui-react/issues" icon="ios-help">提问</Menu.Item>
+                        <Menu.Item name="https://github.com/chuchur/react-kui/issues" icon="ios-help">提问</Menu.Item>
                         <Menu.Item name="https://www.chuchur.com" icon="ios-person">Blog</Menu.Item>
                     </Menu>
                 </header>

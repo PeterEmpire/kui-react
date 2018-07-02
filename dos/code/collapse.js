@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Collapse } from 'kui-react';
+code.base = `import { Collapse } from 'react-kui';
 const Panel = Collapse.Panel
 ReactDOM.render() {
   return (
@@ -26,7 +26,7 @@ ReactDOM.render() {
   )
 }`
 
-code.accrodion = `import { Collapse } from 'kui-react';
+code.accrodion = `import { Collapse } from 'react-kui';
 const Panel = Collapse.Panel
 ReactDOM.render() {
   return (
@@ -52,7 +52,7 @@ ReactDOM.render() {
   )
 }`
 
-code.collapse=`import { Collapse } from 'kui-react';
+code.collapse=`import { Collapse } from 'react-kui';
 const Panel = Collapse.Panel
 ReactDOM.render() {
   return (
@@ -90,7 +90,7 @@ ReactDOM.render() {
   )
 }`
 
-code.sample =`import { Collapse } from 'kui-react';
+code.sample =`import { Collapse } from 'react-kui';
 const Panel = Collapse.Panel
 ReactDOM.render() {
   return (

@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Tree } from 'kui-react';
+code.base = `import { Tree } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -35,7 +35,7 @@ ReactDOM.render() {
 }
 `
 
-code.checked = `import { Tree } from 'kui-react';
+code.checked = `import { Tree } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -78,7 +78,7 @@ ReactDOM.render() {
 }
 `
 
-code.async = `import { Tree } from 'kui-react';
+code.async = `import { Tree } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -112,7 +112,7 @@ ReactDOM.render() {
 }
 `
 
-code.icon = `import { Tree } from 'kui-react';
+code.icon = `import { Tree } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

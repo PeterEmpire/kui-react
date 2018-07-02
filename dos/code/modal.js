@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Modal } from 'kui-react';
+code.base = `import { Modal } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -15,7 +15,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.custom = `import { Modal } from 'kui-react';
+code.custom = `import { Modal } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -51,7 +51,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.canMove = `import { Modal } from 'kui-react';
+code.canMove = `import { Modal } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -66,7 +66,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.mode = `import { Modal } from 'kui-react';
+code.mode = `import { Modal } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Alert } from 'kui-react';
+code.base = `import { Alert } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -13,7 +13,7 @@ ReactDOM.render() {
 }`
 
 
-code.icon = `import { Alert } from 'kui-react';
+code.icon = `import { Alert } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -25,7 +25,7 @@ ReactDOM.render() {
   )
 }`
 
-code.close = `import { Alert } from 'kui-react';
+code.close = `import { Alert } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Tabs } from 'kui-react';
+code.base = `import { Tabs } from 'react-kui';
 ReactDOM.render() {
   return (
     <Tabs value="3">
@@ -11,7 +11,7 @@ ReactDOM.render() {
   )
 }`
 
-code.disabled = `import { Tabs } from 'kui-react';
+code.disabled = `import { Tabs } from 'react-kui';
 ReactDOM.render() {
   return (
     <Tabs>
@@ -22,7 +22,7 @@ ReactDOM.render() {
   )
 }`
 
-code.icon = `import { Tabs } from 'kui-react';
+code.icon = `import { Tabs } from 'react-kui';
 ReactDOM.render() {
   return (
     <Tabs>
@@ -32,7 +32,7 @@ ReactDOM.render() {
     </Tabs>
   )
 }`
-code.card = `import { Tabs } from 'kui-react';
+code.card = `import { Tabs } from 'react-kui';
 ReactDOM.render() {
   return (
     <Tabs card extra={<Button mini>Action</Button>}>
@@ -43,7 +43,7 @@ ReactDOM.render() {
   )
 }`
 
-code.closable =`import { Tabs } from 'kui-react';
+code.closable =`import { Tabs } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -76,7 +76,7 @@ ReactDOM.render() {
   )
 }`
 
-code.sample = `import { Tabs } from 'kui-react';
+code.sample = `import { Tabs } from 'react-kui';
 ReactDOM.render() {
   return (
     <Tabs value="1" sample>

@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { TimeLine } from 'kui-react';
+code.base = `import { TimeLine } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -12,7 +12,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.withIcon = `import { TimeLine } from 'kui-react';
+code.withIcon = `import { TimeLine } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -24,7 +24,7 @@ ReactDOM.render() {
     </div>
   )
 }`
-code.color = `import { TimeLine } from 'kui-react';
+code.color = `import { TimeLine } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

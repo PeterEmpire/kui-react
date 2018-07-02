@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { TreeSelect } from 'kui-react';
+code.base = `import { TreeSelect } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -37,7 +37,7 @@ ReactDOM.render() {
   return <TreeSelect data={this.state.data} />
 }`
 
-code.async = `import { TreeSelect } from 'kui-react';
+code.async = `import { TreeSelect } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {
@@ -105,7 +105,7 @@ ReactDOM.render() {
             onLoadData={this.loadData.bind(this)} />
 }`
 
-code.callback = `import { TreeSelect } from 'kui-react';
+code.callback = `import { TreeSelect } from 'react-kui';
 constructor(props) {
   super(props)
   this.state = {

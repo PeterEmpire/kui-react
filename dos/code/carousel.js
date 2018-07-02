@@ -1,6 +1,6 @@
 let code = {}
 
-code.base = `import { Carousel } from 'kui-react';
+code.base = `import { Carousel } from 'react-kui';
 ReactDOM.render() {
   return (
     <Carousel>
@@ -12,7 +12,7 @@ ReactDOM.render() {
   )
 }`
 
-code.vertical = `import { Carousel } from 'kui-react';
+code.vertical = `import { Carousel } from 'react-kui';
 ReactDOM.render() {
   return (
     <Carousel vertical>
@@ -24,7 +24,7 @@ ReactDOM.render() {
   )
 }`
 
-code.autoplay = `import { Carousel } from 'kui-react';
+code.autoplay = `import { Carousel } from 'react-kui';
 ReactDOM.render() {
   return (
     <Carousel autoplay>
@@ -36,7 +36,7 @@ ReactDOM.render() {
   )
 }`
 
-code.radius = `import { Carousel } from 'kui-react';
+code.radius = `import { Carousel } from 'react-kui';
 ReactDOM.render() {
   return (
     <Carousel dotsType="radius">

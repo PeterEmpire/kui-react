@@ -1,6 +1,6 @@
 let code = {}
 
-code.base=`import { Button } from 'kui-react';
+code.base=`import { Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -11,7 +11,7 @@ ReactDOM.render() {
   )
 }`
 
-code.disabled= `import { Button } from 'kui-react';
+code.disabled= `import { Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -21,7 +21,7 @@ ReactDOM.render() {
   )
 }`
 
-code.withIcon =`import { Button } from 'kui-react';
+code.withIcon =`import { Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -35,7 +35,7 @@ ReactDOM.render() {
   )
 }`
 
-code.size =`import { Button } from 'kui-react';
+code.size =`import { Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>
@@ -45,7 +45,7 @@ ReactDOM.render() {
   )
 }`
 
-code.group=`import { Button } from 'kui-react';
+code.group=`import { Button } from 'react-kui';
 ReactDOM.render() {
   return (
     <div>

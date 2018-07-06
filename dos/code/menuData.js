@@ -62,12 +62,13 @@ let nav = [
       { title: "导航菜单", sub: "Menu", link: "/menu", icon: 'navicon' },
       { title: "分页", sub: "Page", link: "/page", icon: 'ios-skipforward' },
       { title: "步骤条", sub: "Steps", link: "/steps", icon: 'android-done-all' },
-      { title: "标签页", sub: "Tabs", link: "/tabs",icon:'ios-photos' },
+      { title: "标签页", sub: "Tabs", link: "/tabs", icon: 'ios-photos' },
     ]
   },
   {
     title: "其他",
     child: [
+      { title: "码云", weblink: "https://gitee.com/chuchur/kui-react", icon: 'social-github', },
       { title: "github", weblink: "https://github.com/chuchur/kui-react", icon: 'social-github', },
       { title: "支持作者", link: "/sponsor", icon: 'social-usd' },
       { title: "关于", link: "/about", icon: 'android-happy' }

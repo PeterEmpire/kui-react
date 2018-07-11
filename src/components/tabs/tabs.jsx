@@ -16,6 +16,11 @@ export default class Tabs extends Kui {
       itemWidth: 0,
       items: []
     }
+    this.scrollRef = React.createRef()
+    this.extraRef = React.createRef()
+    this.rootRef = React.createRef()
+    this.panesRef = React.createRef()
+    this.tabsRef = React.createRef()
   }
   addItem(item) {
     let { items } = this.state
@@ -58,8 +63,8 @@ export default class Tabs extends Kui {
     };
   }
   scroll(t) {
-    let boxWidth = this.refs.scroll.offsetWidth;
-    let scrollWidth = this.refs.scroll.scrollWidth;
+    let boxWidth = this.scrollRef.current.offsetWidth;
+    let scrollWidth = this.scrollRef.current.scrollWidth;
     let { tabLeft } = this.state
     if (t == "next") {
       let last = scrollWidth + tabLeft - boxWidth; //剩余的要偏移的长度
@@ -72,9 +77,9 @@ export default class Tabs extends Kui {
     this.setState({ tabLeft })
   }
   setScroll() {
-    let boxWidth = this.refs.scroll.offsetWidth;
-    let scrollWidth = this.refs.scroll.scrollWidth;
-    let extraWidth = this.refs.extra ? this.refs.extra.offsetWidth : 0;
+    let boxWidth = this.scrollRef.current.offsetWidth;
+    let scrollWidth = this.scrollRef.current.scrollWidth;
+    let extraWidth = this.extraRef.current ? this.extraRef.current.offsetWidth : 0;
     let count = this.state.items.length
     // console.log(boxWidth,scrollWidth,extraWidth)
     // let s = this.scrollable ? 39 * 2 - 10 : 0;
@@ -86,7 +91,7 @@ export default class Tabs extends Kui {
         tabLeft = -(scrollWidth - boxWidth);
       }
     }
-    itemWidth = this.refs.root.offsetWidth;
+    itemWidth = this.rootRef.current.offsetWidth;
     listWidth = itemWidth * count;
     this.setState({ scrollable, tabLeft, itemWidth, listWidth })
   }
@@ -105,7 +110,7 @@ export default class Tabs extends Kui {
     }
 
     items.splice(index, 1);
-    this.refs.panes.removeChild(this.refs.panes.children[index]);
+    this.panesRef.current.removeChild(this.panesRef.current.children[index]);
     this.setState({ activeName, paneLeft })
   }
   handelClick(disabled, name, index) {
@@ -137,7 +142,7 @@ export default class Tabs extends Kui {
     }
     left = index;
     paneLeft = index;
-    itemWidth = this.refs.root.offsetWidth;
+    itemWidth = this.rootRef.current.offsetWidth;
 
     listWidth = itemWidth * items.length;
 
@@ -170,16 +175,16 @@ export default class Tabs extends Kui {
           React.cloneElement(child, Object.assign({}, child.props, { width: itemWidth, name: child.props.name || index })) : null
       })
     }
-    let inkStyles = {}, tabs = this.refs.tabs
+    let inkStyles = {}, tabs = this.tabsRef.current
     if (tabs && tabs.children.length > 1 && !card) {
       inkStyles = {
         width: `${tabs.children[paneLeft + 1].offsetWidth}px`,
         left: `${tabs.children[paneLeft + 1].offsetLeft}px`
       }
     }
-    return (<div className={this.classes()} ref="root">
+    return (<div className={this.classes()} ref={this.rootRef}>
       <div className="k-tabs-bar">
-        {extra && <div className="k-tabs-extra">
+        {extra && <div className="k-tabs-extra" ref={this.extraRef}>
           {extra}
         </div>}
         <div className={this.className(['k-tabs-nav-container', { ['k-tabs-nav-container-scroll']: scrollable }])}>
@@ -190,8 +195,8 @@ export default class Tabs extends Kui {
             <Icon type="ios-arrow-right" />
           </span>
           <div className="k-tabs-nav-wrap">
-            <div className="k-tabs-nav-scroll" ref="scroll" style={this.styles(this.scrollStyle())}>
-              <div className="k-tabs-nav" ref="tabs">
+            <div className="k-tabs-nav-scroll" ref={this.scrollRef} style={this.styles(this.scrollStyle())}>
+              <div className="k-tabs-nav" ref={this.tabsRef}>
                 {!card && <div className="k-tabs-ink-bar" style={inkStyles}></div>}
                 {renderTabs()}
               </div>
@@ -199,7 +204,7 @@ export default class Tabs extends Kui {
           </div>
         </div>
       </div>
-      <div className="k-tabs-content" style={this.styles(this.paneStyles())} ref="panes">
+      <div className="k-tabs-content" style={this.styles(this.paneStyles())} ref={this.panesRef}>
         {renderChild()}
       </div>
     </div>)

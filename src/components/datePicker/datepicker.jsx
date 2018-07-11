@@ -15,7 +15,8 @@ export default class DatePicker extends Kui {
       local: require(`./lang/${props.lang}.js`),
       value: props.value
     }
-    this.dom = React.createRef()
+    this.domRef = React.createRef()
+    this.relRef = React.createRef()
   }
   relStyles() {
     let { width } = this.props
@@ -43,7 +44,7 @@ export default class DatePicker extends Kui {
   popupStyle() {
     let { left, top, fadeInBottom } = this.state
     let style = {};
-    Array.isArray(this.props.value) && (style.width = "405px");
+    Array.isArray(this.props.value) && (style.width = "415px");
     style.left = `${left}px`;
     style.top = `${top}px`;
     if (fadeInBottom) {
@@ -53,8 +54,8 @@ export default class DatePicker extends Kui {
   }
   hidePopup(e) {
     if (this.state.visible &&
-      !this.refs.rel.contains(e.target) &&
-      !this.dom.current.contains(e.target)) {
+      !this.relRef.current.contains(e.target) &&
+      !this.domRef.current.contains(e.target)) {
       this.setState({ visible: false })
     }
 
@@ -72,8 +73,8 @@ export default class DatePicker extends Kui {
   setPosition() {
     // if (!this.state.visible) return;
     let m = 3;
-    let rel = this.refs.rel;
-    let dom = this.dom.current;
+    let rel = this.relRef.current;
+    let dom = this.domRef.current;
     if (!dom) return;
     let relPos = rel.getBoundingClientRect()
 
@@ -195,14 +196,14 @@ export default class DatePicker extends Kui {
     let { placeholder, disabled, name, clearable, transfer, value, format, disabledDate } = this.props
     return (<div className={this.classes()} style={this.styles(this.relStyles())}>
       <input readOnly value={text} type="text" className={this.inputClass()}
-        onClick={this.toggleDrop.bind(this)} disabled={disabled} placeholder={placeholder} name={name} ref="rel" />
+        onClick={this.toggleDrop.bind(this)} disabled={disabled} placeholder={placeholder} name={name} ref={this.relRef} />
       {(clearable && !disabled) && <a className="k-datepicker-close" onClick={this.onClear.bind(this)}></a>}
       <Transfer transfer={transfer}
         onScroll={this.setPosition.bind(this)}
         onResize={this.setPosition.bind(this)}
         docOnClick={(e) => this.hidePopup(e)}>
         <Transition name="dropdown" show={visible} onEnter={() => this.setPosition()}>
-          <div className="k-datepicker-popup" style={this.popupStyle()} tabIndex="-1" ref={this.dom} >
+          <div className="k-datepicker-popup" style={this.popupStyle()} tabIndex="-1" ref={this.domRef} >
             {
               Array.isArray(value) ?
                 <React.Fragment>

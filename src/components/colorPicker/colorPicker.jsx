@@ -31,7 +31,8 @@ export default class ColorPicker extends Kui {
       ],
       showColor: props.value
     }
-    this.dom = React.createRef();
+    this.domRef = React.createRef();
+    this.relRef = React.createRef()
   }
   popupStyle() {
     let style = {};
@@ -69,8 +70,8 @@ export default class ColorPicker extends Kui {
   setPosition() {
     if (!this.state.visible) return;
     let m = 3;
-    let rel = this.refs.rel;
-    let dom = this.dom.current;
+    let rel = this.relRef.current;
+    let dom = this.domRef.current;
     let relPos = rel.getBoundingClientRect()
 
 
@@ -166,7 +167,7 @@ export default class ColorPicker extends Kui {
 
     if (!visible) return
 
-    if (!this.refs.rel.contains(e.target) && !this.dom.current.contains(e.target)) {
+    if (!this.relRef.current.contains(e.target) && !this.domRef.current.contains(e.target)) {
       showMore = false;
       showColor = this.props.value;
       this.setState({ visible: false, showMore, showColor })
@@ -194,7 +195,7 @@ export default class ColorPicker extends Kui {
     }
     return (<div className={this.classes()} >
       {/* 颜色显示小方块  */}
-      <div onClick={this.toggleDrop.bind(this)} ref="rel">
+      <div onClick={this.toggleDrop.bind(this)} ref={this.relRef}>
         <div className="k-color-button" style={{ backgroundColor: showColor }}></div>
         < div className="k-color-arrow" ></div>
       </div>
@@ -206,7 +207,7 @@ export default class ColorPicker extends Kui {
         docOnClick={(e) => this.hidePopup(e)}
       >
         <Transition name="dropdown" show={visible}>
-          <div className="k-colorpicker-popup" ref={this.dom} style={this.styles(this.popupStyle())}>
+          <div className="k-colorpicker-popup" ref={this.domRef} style={this.styles(this.popupStyle())}>
             {showMore ?
               <Picker onChange={this.updataValue.bind(this)} value={showColor} />
               :

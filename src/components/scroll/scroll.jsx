@@ -19,6 +19,10 @@ class Scroll extends Kui {
       animaded: false,
       Events: document.createEvent('Events'),
     }
+
+    this.wrapRef = React.createRef()
+    this.innerRef = React.createRef()
+
     this.barMouseMove = this.barMouseMove.bind(this)
     this.barMouseUp = this.barMouseUp.bind(this)
     this.resize = this.resize.bind(this)
@@ -85,8 +89,8 @@ class Scroll extends Kui {
     }
   }
   initBar() {
-    let wrapHeight = this.refs.wrap.offsetHeight;
-    let innerHeight = this.refs.inner.scrollHeight;
+    let wrapHeight = this.wrapRef.current.offsetHeight;
+    let innerHeight = this.innerRef.current.scrollHeight;
     let barHeight = (wrapHeight / innerHeight) * 100;
     let showVerticalBar = wrapHeight < innerHeight;
     let viewY = wrapHeight > innerHeight ? 0 : this.state.viewY
@@ -180,7 +184,7 @@ class Scroll extends Kui {
     }
   }
   touchStart(e) {
-    this.refs.wrap.focus()
+    this.wrapRef.current.focus()
     this.initBar()
     this.setState({ isBarMouseDown: true, moveY: e.touches[0].clientY })
   }
@@ -211,9 +215,9 @@ class Scroll extends Kui {
   }
   render() {
     let { showVerticalBar, showHorizontalBar } = this.state
-    return (<div className={this.className(['k-scroll'])} tabIndex="0" onWheel={this.mouseWheel} ref="wrap"
+    return (<div className={this.className(['k-scroll'])} tabIndex="0" onWheel={this.mouseWheel} ref={this.wrapRef}
       onKeyDown={this.keyDown} onKeyUp={this.keyUp} onMouseMove={this.mouseOver}>
-      <div className="k-scroll-view" style={this.viewStyles()} ref="inner" onTouchStart={this.touchStart}
+      <div className="k-scroll-view" style={this.viewStyles()} ref={this.innerRef} onTouchStart={this.touchStart}
         onTouchMove={this.touchMove} onTouchEnd={this.touchEnd}>
         {this.props.children}
       </div>

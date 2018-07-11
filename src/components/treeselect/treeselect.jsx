@@ -14,7 +14,8 @@ export default class TreeSelect extends Kui {
       value: props.value,
       queryKey: ''
     }
-    this.dom = React.createRef();
+    this.domRef = React.createRef();
+    this.relRef = React.createRef()
   }
   isClearable() {
     return this.props.clearable && !this.props.disabled && this.state.showLabel;
@@ -85,7 +86,7 @@ export default class TreeSelect extends Kui {
       return false;
     }
     this.setState({
-      dropdownWith: this.refs.rel.offsetWidth,
+      dropdownWith: this.relRef.current.offsetWidth,
       visible: !this.state.visible
     })
 
@@ -100,8 +101,8 @@ export default class TreeSelect extends Kui {
   setPosition() {
     if (!this.state.visible) return;
     let m = 3;
-    let rel = this.refs.rel;
-    let dom = this.dom.current;
+    let rel = this.relRef.current;
+    let dom = this.domRef.current;
     let relPos = rel.getBoundingClientRect()
 
     let clientH = window.innerHeight;
@@ -145,7 +146,7 @@ export default class TreeSelect extends Kui {
   }
   hidePopup(e) {
     if (!this.state.visible) return
-    if (!this.refs.rel.contains(e.target) && !this.dom.current.contains(e.target)) {
+    if (!this.relRef.current.contains(e.target) && !this.domRef.current.contains(e.target)) {
       this.setState({ visible: false, queryKey: '', label: this.state.selectLabel })
     }
   }
@@ -169,10 +170,10 @@ export default class TreeSelect extends Kui {
     let { placeholder, disabled, queryPlaceholder, transfer, data, onLoadData, queryable } = this.props
 
     return (<div className={this.classes()} style={this.styles(this.selectStyles())}  >
-      <div className={this.selectClass()} onClick={this.toggleDrop.bind(this)} ref="rel">
+      <div className={this.selectClass()} onClick={this.toggleDrop.bind(this)} ref={this.relRef}>
         <input type="text" className="k-select-label" placeholder={placeholder} value={showLabel}
           readOnly="readonly"
-          disabled={disabled} ref="input" onChange={(e) => this.labelChange(e)} />
+          disabled={disabled} onChange={(e) => this.labelChange(e)} />
         <span className="k-select-arrow"></span>
         {this.isClearable && <span className="k-select-clearable" onClick={(e) => this.onClear(e)}></span>}
       </div >
@@ -182,7 +183,7 @@ export default class TreeSelect extends Kui {
         docOnClick={(e) => this.hidePopup(e)}>
         <Transition name="dropdown" show={visible}>
           {
-            <div className="k-select-dropdown" ref={this.dom} style={this.styles(this.dropdownStyles())}>
+            <div className="k-select-dropdown" ref={this.domRef} style={this.styles(this.dropdownStyles())}>
               {queryable && <div className="k-treeselect-search">
                 <input className="k-treeselect-input" placeholder={queryPlaceholder} value={queryKey} onChange={(e) => this.setState({ queryKey: e.target.value })} />
                 <input type="button" value="搜索" className="k-treeselect-btn" onClick={this.onQueryChange.bind(this)} />

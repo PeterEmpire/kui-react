@@ -13,7 +13,7 @@ export default class Modal extends Kui {
       startPos: { x: 0, y: 0 }
     }
     this.onKeyUp = this.onKeyUp.bind(this)
-    this.wrap = React.createRef()
+    this.modalRef = React.createRef()
   }
   onStop(e) {
     e.cancelBubble = true
@@ -113,7 +113,7 @@ export default class Modal extends Kui {
     }
   }
   clickMaskToClose(e) {
-    if (!this.refs.modal.contains(e.target) && !this.props.isMove) {
+    if (!this.modalRef.current.contains(e.target) && !this.props.isMove) {
       this.setState({ visible: false })
     }
   }
@@ -154,7 +154,7 @@ export default class Modal extends Kui {
       </div>
     }
     return <div className="k-modal-wrap" onClick={this.clickMaskToClose.bind(this)}>
-      <div className="modal" ref="modal" style={this.styles(this.modalStyles())}>
+      <div className="modal" ref={this.modalRef} style={this.styles(this.modalStyles())}>
         <div className="k-modal-content">
           <a className="k-modal-close" onClick={this.onClose.bind(this)}><Icon type="android-close" /></a>
           {this.props.type == 'modal' && <div className="k-modal-header" style={this.styles(this.headerStyle())}

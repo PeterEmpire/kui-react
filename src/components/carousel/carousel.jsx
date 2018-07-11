@@ -16,6 +16,7 @@ export default class Carousel extends Kui {
     this.autotimer = null;
     this.autoFn = null;
     this.onResize = this.onResize.bind(this)
+    this.domRef = React.createRef()
   }
   classes() {
     return this.className(['k-carousel', {
@@ -79,7 +80,7 @@ export default class Carousel extends Kui {
   }
   onResize() {
     if (!this.props.vertical)
-      this.setState({ itemWidth: this.refs.dom.offsetWidth })
+      this.setState({ itemWidth: this.domRef.current.offsetWidth })
   }
   componentDidMount() {
     document.addEventListener('resize', this.onResize)
@@ -87,12 +88,12 @@ export default class Carousel extends Kui {
     let { itemWidth, listWidth, listHeight, itemHeight } = this.state
     let count = React.Children.toArray(children).length
     if (!vertical) {
-      itemWidth = this.refs.dom.offsetWidth
+      itemWidth = this.domRef.current.offsetWidth
       listWidth = itemWidth * count
     } else {
-      listHeight = this.refs.dom.offsetHeight
+      listHeight = this.domRef.current.offsetHeight
       itemHeight = listHeight / count
-      this.refs.dom.style.height = itemHeight + 'px'
+      this.domRef.current.style.height = itemHeight + 'px'
     }
     // this.children.forEach(child => {
     //     child.width = this.itemWidth
@@ -118,7 +119,7 @@ export default class Carousel extends Kui {
       }
       return dots
     }
-    return (<div className={this.classes()} ref="dom">
+    return (<div className={this.classes()} ref={this.domRef}>
       <div className="k-carousel-list" style={this.styles(this.listStyles())}>
         {
           React.Children.map(this.props.children, child => {

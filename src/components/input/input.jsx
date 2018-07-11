@@ -9,12 +9,17 @@ export default class Input extends Kui {
       isFocus: false,
       isMove: false
     }
+
+    this.inputRef = React.createRef()
+    this.textareaRef = React.createRef()
+
     this.handleMove = this.handleMove.bind(this)
     this.handleOut = this.handleOut.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
     this.handleInput = this.handleInput.bind(this)
     this.setCurrentValue = this.setCurrentValue.bind(this)
+
   }
   //compted
   iconClasses() {
@@ -130,9 +135,9 @@ export default class Input extends Kui {
   }
   focus() {
     if (this.props.type === "textarea") {
-      this.refs.textarea.focus();
+      this.textareaRef.current.focus();
     } else {
-      this.refs.input.focus();
+      this.inputRef.current.focus();
     }
     this.setState({
       isFocus: true
@@ -140,9 +145,9 @@ export default class Input extends Kui {
   }
   blur() {
     if (this.props.type === "textarea") {
-      this.refs.textarea.blur();
+      this.textareaRef.current.blur();
     } else {
-      this.refs.input.blur();
+      this.inputRef.current.blur();
     }
     this.setState({
       isFocus: false
@@ -167,21 +172,21 @@ export default class Input extends Kui {
         type !== 'textarea' ?
           <div>
             {icon && type !== 'textarea' && <i className={this.iconClasses()} onClick={this.iconClick.bind(this)}></i>}
-            <input id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref="input" type={type}
+            <input id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref={this.inputRef} type={type}
               className={this.inputClasses()} placeholder={placeholder} disabled={disabled}
               maxLength={maxLength} value={this.state.currentValue}
               readOnly={readOnly} name={name} number={number} autoFocus={autoFocus}
-              onKeyUp={e => this.handleKeyup(e)} 
-              onKeyPress={e => this.handleKeypress(e)} 
+              onKeyUp={e => this.handleKeyup(e)}
+              onKeyPress={e => this.handleKeypress(e)}
               onKeyDown={e => this.handleKeydown(e)}
-              onFocus={e => this.handleFocus(e)} onBlur={e => this.handleBlur(e)} 
-              onInput={e => this.handleInput(e)} 
-              onChange={e => this.handleChange(e)} 
-              />
+              onFocus={e => this.handleFocus(e)} onBlur={e => this.handleBlur(e)}
+              onInput={e => this.handleInput(e)}
+              onChange={e => this.handleChange(e)}
+            />
             {type != 'textarea' && clearable && this.state.clearableShow && <span className='k-input-clearable' onClick={this.clear.bind(this)} ></span >}
           </div >
           :
-          <textarea id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref="textarea"
+          <textarea id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref={this.textareaRef}
             className={this.textareaClasses()} placeholder={placeholder} disabled={disabled} rows={rows}
             maxLength={maxLength} readOnly={readOnly}
             name={name} value={this.state.currentValue} autoFocus={autoFocus} onChange={e => this.handleChange(e)}

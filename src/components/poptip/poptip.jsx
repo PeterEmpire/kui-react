@@ -11,7 +11,8 @@ export default class Poptip extends Kui {
       left: 0,
       top: 0
     }
-    this.dom = React.createRef()
+    this.domRef = React.createRef()
+    this.refRef = React.createRef()
   }
   classes() {
     return this.className([
@@ -30,7 +31,7 @@ export default class Poptip extends Kui {
   }
   onHide(e) {
     if (this.props.transfer && this.dom.current) {
-      if (!this.dom.current.contains(e.target) && !this.refs.rel.contains(e.target)) {
+      if (!this.domRef.current.contains(e.target) && !this.relRef.current.contains(e.target)) {
         this.setState({ visible: false })
       }
     }
@@ -57,7 +58,7 @@ export default class Poptip extends Kui {
   }
   setPosition() {
     let pos = { left: 0, top: 0 };
-    let rel = this.refs.rel && this.refs.rel.children[0] || this.refs.rel
+    let rel = this.relRef.current && this.relRef.current.children[0] || this.relRef.current
     if(!rel) return;
     if (this.props.transfer) {
       pos = rel.getBoundingClientRect()
@@ -128,12 +129,12 @@ export default class Poptip extends Kui {
   render() {
     let { children, placement, transfer, title, confirm, content, cancelText, okText } = this.props
     return (<div className="k-poptip" onMouseEnter={this.mouseHandle.bind(this)} onMouseLeave={this.mouseHandle.bind(this)} >
-      <div className="k-poptip-rel" ref="rel" onClick={this.relClick.bind(this)}>
+      <div className="k-poptip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>
       <Transfer transfer={transfer} onScroll={this.setPosition.bind(this)} onResize={this.setPosition.bind(this)} docOnClick={(e) => this.onHide(e)}>
         <Transition name="fade" show={this.state.visible}>
-          <div className={this.classes()} style={this.styles(this.popStyles())} ref={this.dom} k-placement={placement} >
+          <div className={this.classes()} style={this.styles(this.popStyles())} ref={this.domRef} k-placement={placement} >
             <div className="k-poptip-arrow"></div>
             {title && <div className="k-poptip-title">
               {confirm && <i className="k-ion-help-circled" ></i>}

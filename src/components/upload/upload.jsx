@@ -8,6 +8,9 @@ export default class Upload extends Kui {
       file: null,
       span: Math.floor(Math.random() * 99999999)
     }
+    this.uploadFileRef = React.createRef()
+    this.uploadFormRef = React.createRef()
+    this.uploadIframeRef = React.createRef()
   }
   classes() {
     return this.className([
@@ -21,7 +24,8 @@ export default class Upload extends Kui {
     e.cancelBubble = true;
     if (this.props.disabled) return false;
 
-    this.refs["k-upload-file"].click();
+    this.uploadFileRef.current.click();
+
     return false;
   }
   upload(e) {
@@ -41,7 +45,7 @@ export default class Upload extends Kui {
     if (!file) {
       return false;
     }
-    this.refs["k-upload-form"].submit();
+    this.uploadFormRef.current.submit();
   }
   complite(fm, e) {
     let doc = fm.contentWindow || fm.contentDocument;
@@ -52,7 +56,7 @@ export default class Upload extends Kui {
         if (content) {
           let data = eval("(" + content + ")");
           this.props.onComplite && this.props.onComplite(data)
-          this.refs["k-upload-file"].value = "";
+          this.uploadFileRef.current.value = "";
           // this.select = false;
           this.file = null;
           this.setState({ file: null })
@@ -60,12 +64,12 @@ export default class Upload extends Kui {
       }
     } catch (e) {
       let msg = e.message.indexOf("cross-origin") >= 0 ? "不支持跨域上传!" : "上传文件格式不支持！";
-      console.log(e)
+
       Message.error(msg);
     }
   }
   componentDidMount() {
-    const fm = this.refs["k-upload-iframe"];
+    const fm = this.uploadIframeRef.current
     if (!fm) return;
     if (fm.attachEvent) {
       fm.attachEvent("onload", e => this.complite(fm, e));
@@ -87,9 +91,11 @@ export default class Upload extends Kui {
     return (<div className={this.classes()} onClick={this.changeFile.bind(this)}>
       {children}
       <div className="k-upload-form">
-        <iframe frameBorder="0" name={`k-upload-iframe-${span}`} style={{ display: 'none' }} ref="k-upload-iframe"></iframe>
-        <form action={action} method={method} encType="multipart/form-data" style={{ display: 'none' }} ref="k-upload-form" target={`k-upload-iframe-${span}`}>
-          <input type="file" name={name} id={id} onChange={(e) => this.upload(e)} ref="k-upload-file" />
+        <iframe frameBorder="0" name={`k-upload-iframe-${span}`} style={{ display: 'none' }} ref={this.uploadIframeRef}></iframe>
+        <form action={action} method={method} encType="multipart/form-data"
+          style={{ display: 'none' }} ref={this.uploadFormRef}
+          target={`k-upload-iframe-${span}`}>
+          <input type="file" name={name} id={id} onChange={(e) => this.upload(e)} ref={this.uploadFileRef} />
           {
             renderData()
           }

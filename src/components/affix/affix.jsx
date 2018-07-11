@@ -9,6 +9,8 @@ export default class Affix extends Kui {
             height: 0,
         }
         this.scroll = this.scroll.bind(this)
+        this.blobRef = React.createRef()
+        this.affixRef = React.createRef()
     }
     classes() {
         return this.className([{ ['k-affix']: this.state.showBlob }])
@@ -32,7 +34,7 @@ export default class Affix extends Kui {
         let { showBlob } = this.state
         let { onChange, offsetBottom, offsetTop } = this.props
         if (showBlob) {
-            let pos = this.refs.blob.getBoundingClientRect()
+            let pos = this.blobRef.current.getBoundingClientRect()
             //unfixedBottom
             if (offsetBottom !== undefined && offsetBottom >= 0) {
                 let bodyPos = document.body.getBoundingClientRect()
@@ -48,7 +50,7 @@ export default class Affix extends Kui {
                 onChange && onChange(false)
             }
         } else {
-            let pos = this.refs.affix.getBoundingClientRect()
+            let pos = this.affixRef.current.getBoundingClientRect()
             //fixedBottom
             if (offsetBottom >= 0) {
                 // console.log(pos)
@@ -77,10 +79,10 @@ export default class Affix extends Kui {
     }
     render() {
         return (<div>
-            <div style={this.styles(this.relStyles())} className={this.classes()} ref="affix">
+            <div style={this.styles(this.relStyles())} className={this.classes()} ref={this.affixRef}>
                 {this.props.children}
             </div>
-            {this.state.showBlob && <div style={this.styles(this.blobStyle())} ref="blob"></div>}
+            {this.state.showBlob && <div style={this.styles(this.blobStyle())} ref={this.blobRef}></div>}
         </div>)
     }
 }

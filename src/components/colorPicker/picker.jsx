@@ -11,6 +11,7 @@ export default class Picker extends Kui {
       square: 100, radius: 84,
       rx: 0, ry: 0, sx: 0, sy: 0,
     }
+    this.wheelRef = React.createRef()
   }
   setColor(newColor) {
     let { color, rgb, hsl } = this.state
@@ -35,7 +36,7 @@ export default class Picker extends Kui {
   widgetCoords(event) {
     var x, y;
     var el = event.target || event.srcElement;
-    var wheel = this.refs.wheel; //fb.wheel;
+    var wheel = this.wheelRef.current; //fb.wheel;
     if (typeof event.offsetX != "undefined") {
       // 使用偏移坐标，找到共同的offsetparent
       var pos = { x: event.offsetX, y: event.offsetY };
@@ -217,7 +218,7 @@ export default class Picker extends Kui {
     return (<div className="k-picker" onMouseDown={this.onMouseDown.bind(this)}
       onMouseMove={this.onMouseMove.bind(this)} onMouseUp={this.onMouseUp.bind(this)}>
       <div className="k-picker-color" style={{ backgroundColor: scolor }}></div>
-      <div className="k-picker-wheel" ref="wheel"></div>
+      <div className="k-picker-wheel" ref={this.wheelRef}></div>
       <div className="k-picker-overlay"></div>
       <div className="h-marker marker" style={{ left: rx, top: ry }}></div>
       <div className="sl-marker marker" style={{ left: sx, top: sy }}></div>

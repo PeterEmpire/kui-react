@@ -5,6 +5,13 @@ export default class log extends React.Component {
     return (<div className="demo-logs">
       <h2>更新日志</h2>
       <TimeLine>
+      <TimeLine.Item>
+          <h3>1.0.1
+          <span>2018-7-11</span>
+          </h3>
+          <p>修复React 16.x 版本下部分组件ref传递错误的问题</p>
+          <p>修复<code>DatePicker</code>特定情况下换行的bug</p>
+        </TimeLine.Item>
         <TimeLine.Item>
           <h3>1.0.0
           <span>2018-7-1</span>

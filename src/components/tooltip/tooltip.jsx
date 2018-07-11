@@ -10,7 +10,8 @@ export default class Tooltip extends Kui {
       left: 0,
       top: 0
     }
-    this.dom = React.createRef()
+    this.domRef = React.createRef()
+    this.relRef = React.createRef()
   }
   domStyles() {
     let style = {};
@@ -22,7 +23,7 @@ export default class Tooltip extends Kui {
 
   setPosition() {
     let pos = { left: 0, top: 0 };
-    let rel = this.refs.rel.children[0] || this.refs.rel
+    let rel = this.relRef.current.children[0] || this.relRef.current
     if(!rel) return;
     if (this.props.transfer) {
       pos = rel.getBoundingClientRect()
@@ -105,12 +106,12 @@ export default class Tooltip extends Kui {
   render() {
     let { children, transfer, placement, content } = this.props
     return (<div className="k-tooltip" onMouseEnter={this.mouseHandle.bind(this)} onMouseLeave={this.mouseHandle.bind(this)}  >
-      <div className="k-tooltip-rel" ref="rel" onClick={this.relClick.bind(this)}>
+      <div className="k-tooltip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>
       <Transfer transfer={transfer} onScroll={this.handleScroll}>
         <Transition name="fade" show={this.state.visible} >
-          <div className="k-tooltip-dom" style={this.domStyles()} ref={this.dom} k-placement={placement}>
+          <div className="k-tooltip-dom" style={this.domStyles()} ref={this.domRef} k-placement={placement}>
             <div className="k-poptip-arrow"></div>
             <div>
               {content}

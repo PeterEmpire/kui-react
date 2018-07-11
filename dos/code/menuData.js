@@ -14,6 +14,7 @@ let nav = [
     child: [
       { title: "图标", sub: "Icon", link: "/icon", icon: "heart" },
       { title: "按钮", sub: "Button", link: "/button", icon: 'stop' },
+      { title: "栅格", sub: "grid", link: "/grid", icon: 'ios-grid-view' },
       { title: "布局", sub: "layout", link: "/layout", icon: 'social-buffer' },
     ]
   },

@@ -14,6 +14,7 @@ const card = asyncComponent(() => import(/*webpackChunkName:'card'*/'./page/card
 const carousel = asyncComponent(() => import(/*webpackChunkName:'carousel'*/'./page/carousel'))
 const datepicker = asyncComponent(() => import(/*webpackChunkName:'datepicker'*/'./page/datepicker'))
 const form = asyncComponent(() => import(/*webpackChunkName:'form'*/'./page/form'))
+const grid = asyncComponent(() => import(/*webpackChunkName:'grid'*/'./page/grid'))
 const kuiangular = asyncComponent(() => import(/*webpackChunkName:'kuiangular'*/'./page/angular-kui'))
 const icon = asyncComponent(() => import(/*webpackChunkName:'icon'*/'./page/icon'))
 const input = asyncComponent(() => import(/*webpackChunkName:'input'*/'./page/input'))
@@ -48,18 +49,19 @@ let R = {
   badge, button, breadcrumb, backtop,
   collapse, card, checkbox, colorpicker, carousel,
   datepicker,
-  'angular-kui':kuiangular,
+  form,
+  grid,
+  'angular-kui': kuiangular,
   input, icon,
   log, layout, loading,
   modal, message, menu,
   notice,
-  form,
-  upload,
-
   poptip, page,
   radio,
   sponsor, select, Switch, start, tooltip, steps,
-  tag, test, timeline, tabs, table, theme, tree, treeselect
+  tag, test, timeline, tabs, table, theme, tree, treeselect,
+  upload,
+
 }
 
 export default R

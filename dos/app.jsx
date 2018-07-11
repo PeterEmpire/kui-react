@@ -6,15 +6,15 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 //style
 // import '../src/styles';
-import './assets/demo'
 
 import Index from './page/index'
 import Layout from './layout'
 import routers from './router'
 
+import './assets/demo'
 
-import theme from './page/theme'
-import log from './page/log'
+// import theme from './page/theme'
+// import log from './page/log'
 const Main = () => {
     const routes = () => (
         Object.keys(routers).map(route => {

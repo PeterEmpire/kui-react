@@ -1,3 +1,11 @@
+@main: #3a95ff;
+@primary: #3a95ff;
+@success: #00bb5d;
+@danger: #ff3300;
+@warning: #ffa500;
+@gray: #969696;
+@purple: #c13aff;
+@radius: ~'0px';
 * {
   margin: 0;
   padding: 0;
@@ -838,7 +846,31 @@ footer {
     background: #16aa6a;
   }
 }
-
+.demo-k-layout {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  .k-layout {
+    
+    color: #fff;
+  }
+  .k-layout-header,
+  .k-layout-footer {
+    background-color: tint(@main, 50%);
+    text-align: center;
+  }
+  .k-layout-content {
+    min-height: 120px;
+    line-height: 120px;
+    background-color: tint(@main, 40%);
+    text-align: center;
+  }
+  .k-layout-sider {
+    line-height: 120px;
+    background-color: tint(@main, 30%);
+    text-align: center;
+  }
+}
 @media(max-width:640px) {
   header {
     .k-menu-item {

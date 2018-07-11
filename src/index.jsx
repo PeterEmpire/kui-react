@@ -15,6 +15,7 @@ import Form from './components/form/'
 import Icon from './components/icon/'
 import Input from './components/input/'
 import Loading from './components/loading/'
+import Layout from './components/layout/'
 import { Message, Notice } from './components/message'
 import Modal from './components/modal/'
 import Menu from './components/menu/'
@@ -45,7 +46,7 @@ export {
     Card, Checkbox, Collapse, ColorPicker, Carousel,
     DatePicker,
     Form,
-    Loading,
+    Loading,Layout,
     Icon,
     Input,
     Modal, Menu, Message,

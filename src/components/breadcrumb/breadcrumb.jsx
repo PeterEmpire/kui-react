@@ -1,8 +1,9 @@
 import React from 'react'
-export default class Breadcrumb extends React.Component {
+import {Kui} from '../kui'
+export default class Breadcrumb extends Kui {
     render() {
         return (
-            <div className="k-breadcrumb">
+            <div className="k-breadcrumb" style={this.styles()}>
                 {this.props.children}
             </div>
         )

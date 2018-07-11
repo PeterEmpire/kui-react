@@ -20,11 +20,17 @@ module.exports = merge(webpackBaseConfig, {
         path: path.resolve(__dirname, "../dist"),
         publicPath: "",
         filename: "k-ui.js",
-        library: 'kui-react',
+        library: 'react-kui',
         libraryTarget: 'umd',
     },
+    externals: {
+        "react": 'React',
+        'react-dom': 'ReactDOM',
+        'classnames': 'classnames',
+        'router': 'react-router-dom'
+    },
     performance: {
-        hints : false
+        hints: false
     },
     module: {
         rules: [

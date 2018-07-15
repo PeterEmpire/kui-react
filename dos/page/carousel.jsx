@@ -98,7 +98,7 @@ export default class carousel extends Component {
                 <td>2000</td>
               </tr>
               <tr>
-                <td>dots-type</td>
+                <td>dotsType</td>
                 <td>指示器的类型，<code>rect</code> 为方块，<code>radius</code>为圆点</td>
                 <td>Number</td>
                 <td>2000</td>

@@ -108,7 +108,7 @@ export default class radio extends Component {
               <td>false</td>
             </tr>
             <tr>
-              <td>change</td>
+              <td>onChange</td>
               <td>在选项状态发生改变时触发，返回当前状态</td>
               <td>Function</td>
               <td>-</td>
@@ -133,7 +133,7 @@ export default class radio extends Component {
               <td>false</td>
             </tr>
             <tr>
-              <td>change</td>
+              <td>onChange</td>
               <td>在选项状态发生改变时触发，返回当前选中的项</td>
               <td>Function</td>
               <td>-</td>

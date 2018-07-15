@@ -1,7 +1,7 @@
 import React from 'react'
 import { Kui, PropTypes } from '../kui'
 export default class Icon extends Kui {
-  styles() {
+  iconStyles() {
     let style = {};
     if (this.props.size) {
       style["fontSize"] = `${this.props.size}px`;
@@ -15,7 +15,7 @@ export default class Icon extends Kui {
     this.props.onClick && this.props.onClick(e)
   }
   render() {
-    return <i className={this.className([`k-ion-${this.props.type}`])} style={this.styles()} onClick={(e) => this.onClick(e)}></i>
+    return <i className={this.className([`k-ion-${this.props.type}`])} style={this.styles(this.iconStyles())} onClick={(e) => this.onClick(e)}></i>
   }
 }
 

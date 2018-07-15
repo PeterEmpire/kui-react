@@ -13,13 +13,13 @@ export default class Row extends Kui {
     return style;
   }
   render() {
-    return <div className={this.className(['k-row'])} style={this.gutterStyles()}>
+    return <div className={this.className(['k-row'])} style={this.styles(this.gutterStyles())}>
       {
         React.Children.map(this.props.children, child => {
           if (!child || child.type !== Col) {
-            return null
+            return React.cloneElement(child, Object.assign({}, child.props, { gutter: this.props.gutter }))
           }
-          return React.cloneElement(child, Object.assign({}, child.props, { gutter: this.props.gutter }))
+          else return child
         })
       }
     </div>

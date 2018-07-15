@@ -109,7 +109,7 @@ export default class Form extends Kui {
       })
     }
     return (<div>
-      <form autoComplete="off" className={this.classes()}>
+      <form autoComplete="off" className={this.classes()} style={this.styles()}>
         {renderItem()}
       </form>
     </div>)

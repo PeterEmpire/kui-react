@@ -78,7 +78,7 @@ export default class Affix extends Kui {
         window.removeEventListener('scroll', this.scroll);
     }
     render() {
-        return (<div>
+        return (<div style={this.styles()} className={this.className()}>
             <div style={this.styles(this.relStyles())} className={this.classes()} ref={this.affixRef}>
                 {this.props.children}
             </div>

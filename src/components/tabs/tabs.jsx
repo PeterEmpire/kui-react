@@ -182,7 +182,7 @@ export default class Tabs extends Kui {
         left: `${tabs.children[paneLeft + 1].offsetLeft}px`
       }
     }
-    return (<div className={this.classes()} ref={this.rootRef}>
+    return (<div className={this.classes()} ref={this.rootRef} style={this.styles()}>
       <div className="k-tabs-bar">
         {extra && <div className="k-tabs-extra" ref={this.extraRef}>
           {extra}

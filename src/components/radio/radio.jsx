@@ -40,7 +40,7 @@ export default class Radio extends Kui {
     this.setState({ checked: props.checked })
   }
   render() {
-    return <label className={this.wpclasses()}>
+    return <label className={this.wpclasses()} style={this.styles()}>
       <span className={this.classes()}>
         <span className="k-radio-inner"></span>
         <input type="radio" className="k-radio-input" name={this.props.name} disabled={this.props.disabled} checked={this.state.checked} onChange={this.onChange.bind(this)} />

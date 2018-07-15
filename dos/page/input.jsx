@@ -140,7 +140,7 @@ export default class input extends React.Component {
               <td>false</td>
             </tr>
             <tr>
-              <td>iconClick</td>
+              <td>onIconClick</td>
               <td>icon的点击事件</td>
               <td>Function</td>
               <td>-</td>

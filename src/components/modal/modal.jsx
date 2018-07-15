@@ -153,7 +153,7 @@ export default class Modal extends Kui {
         }
       </div>
     }
-    return <div className="k-modal-wrap" onClick={this.clickMaskToClose.bind(this)}>
+    return <div className="k-modal-wrap" onClick={this.clickMaskToClose.bind(this)} style={this.styles()}>
       <div className="modal" ref={this.modalRef} style={this.styles(this.modalStyles())}>
         <div className="k-modal-content">
           <a className="k-modal-close" onClick={this.onClose.bind(this)}><Icon type="android-close" /></a>

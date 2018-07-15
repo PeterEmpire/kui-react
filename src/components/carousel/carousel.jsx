@@ -119,7 +119,7 @@ export default class Carousel extends Kui {
       }
       return dots
     }
-    return (<div className={this.classes()} ref={this.domRef}>
+    return (<div className={this.classes()} ref={this.domRef} style={this.styles()}>
       <div className="k-carousel-list" style={this.styles(this.listStyles())}>
         {
           React.Children.map(this.props.children, child => {

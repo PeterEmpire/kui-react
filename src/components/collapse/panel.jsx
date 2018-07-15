@@ -28,7 +28,7 @@ export default class Panel extends Kui {
         }
     }
     render() {
-        return (<div className={this.classes()}>
+        return (<div className={this.classes()} style={this.styles()}>
             <div className="k-collapse-header" onClick={this.handelClick.bind(this)}>
                 <Icon type="ios-arrow-right" />{this.props.title}</div>
             <Collapse show={this.state.actived}>

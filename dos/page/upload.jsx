@@ -104,13 +104,13 @@ export default class upload extends React.Component {
               <td>change</td>
             </tr>
             <tr>
-              <td>change</td>
+              <td>onChange</td>
               <td>选择文件之后的回调，返回选中的文件名</td>
               <td>Function</td>
               <td>-</td>
             </tr>
             <tr>
-              <td>complite</td>
+              <td>onComplite</td>
               <td>上传完成之后的回调，返回值取决于api上传接口返回的值 </td>
               <td>Function</td>
               <td>-</td>
@@ -118,6 +118,18 @@ export default class upload extends React.Component {
             <tr>
               <td>upload</td>
               <td>触发上传事件，此方法配合type=wait，选中文件后 手动提交上传</td>
+              <td>Function</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>onBeforUpload</td>
+              <td>开始执行上传之前触发事件</td>
+              <td>Function</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>onAfterUpload</td>
+              <td>上传完成之后触发事件</td>
               <td>Function</td>
               <td>-</td>
             </tr>

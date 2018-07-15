@@ -24,7 +24,7 @@ export default class Tooltip extends Kui {
   setPosition() {
     let pos = { left: 0, top: 0 };
     let rel = this.relRef.current.children[0] || this.relRef.current
-    if(!rel) return;
+    if (!rel) return;
     if (this.props.transfer) {
       pos = rel.getBoundingClientRect()
     }
@@ -105,7 +105,8 @@ export default class Tooltip extends Kui {
   }
   render() {
     let { children, transfer, placement, content } = this.props
-    return (<div className="k-tooltip" onMouseEnter={this.mouseHandle.bind(this)} onMouseLeave={this.mouseHandle.bind(this)}  >
+    return (<div className={this.className('k-tooltip')} style={this.styles()} onMouseEnter={this.mouseHandle.bind(this)}
+      onMouseLeave={this.mouseHandle.bind(this)}  >
       <div className="k-tooltip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>

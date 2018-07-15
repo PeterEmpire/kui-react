@@ -8,6 +8,8 @@ export default class Page extends Kui {
       elevator: 0,
       pageCount: 0,
       page: 0,
+      current: 1,
+      total: props.total,
       showPrevMore: false,
       showNextMore: false,
       pageSize: props.pageSize,
@@ -55,10 +57,10 @@ export default class Page extends Kui {
     return this.className(["k-page", { ["k-page-mini"]: this.props.mini }])
   }
   changeSize(value) {
-    let { page, pageSize, pageCount } = this.state
+    let { page, pageSize, pageCount, total } = this.state
     this.setState({
       pageSize: value,
-      pageCount: Math.ceil(this.props.total / value) || 1,
+      pageCount: Math.ceil(total / value) || 1,
       page: page > pageCount ? pageCount : page
     }, () => this.setPagers())
     this.props.onPageSizeChange && this.props.onPageSizeChange(value)
@@ -95,8 +97,10 @@ export default class Page extends Kui {
   }
 
   componentWillMount() {
-    let { total, current } = this.props;
-    let { pageSize } = this.state;
+    this.initPage()
+  }
+  initPage() {
+    let { total, current, pageSize } = this.state;
     let pageCount = Math.ceil(total / pageSize) || 1;
     this.setState({
       pageCount: pageCount,
@@ -112,9 +116,15 @@ export default class Page extends Kui {
     if (props.pageSize != this.state.pageSize) {
       this.setState({ pageSize: props.pageSize })
     }
+    if (props.total != this.props.total || this.props.current != props.current) {
+      this.setState({
+        total: props.total,
+        current: props.current,
+      }, () => this.initPage())
+    }
   }
   render() {
-    let { mini, sizer, sizeData } = this.props;
+    let { mini, showSizer, sizeData, showTotal, showElevator } = this.props;
     let { elevator, pageSize, pageCount, showNextMore, showPrevMore, pagers, page } = this.state;
     let renderPager = () => {
       let pages = []
@@ -123,7 +133,7 @@ export default class Page extends Kui {
       }
       return pages
     }
-    return (<div>
+    return (<div className={this.className()} style={this.styles()}>
       <div className={this.classes()}>
         <ul className="k-pager">
           <li className="k-pager-item" onClick={this.prePage.bind(this)}><span><Icon type="ios-arrow-left" /></span></li>
@@ -135,7 +145,7 @@ export default class Page extends Kui {
           <li className="k-pager-item" onClick={this.nextPage.bind(this)}><span><Icon type="ios-arrow-right" /></span></li>
         </ul >
         {
-          sizer && <div className="k-page-sizer" >
+          showSizer && <div className="k-page-sizer" >
             <Select mini={mini} value={pageSize} onChange={this.changeSize.bind(this)}>
               {
                 sizeData.map((p) => {
@@ -145,15 +155,15 @@ export default class Page extends Kui {
             </Select>
           </div>
         }
-        <div className="k-page-number" >
+        {showTotal && <div className="k-page-number" >
           <span>共{pageCount}页</span>
-        </div >
-        <div className="k-page-options">
+        </div >}
+        {showElevator && <div className="k-page-options">
           <span>跳至</span>
           <Input value={elevator} mini={mini} className="k-page-options-elevator" onChange={(e) => this.setState({ elevator: parseInt(e.target.value) })} />
           <span>页</span>
           <Button mini={mini} className="k-page-options-action" onClick={this.goPage.bind(this)}>确定</Button>
-        </div>
+        </div>}
       </div >
     </div >)
   }
@@ -166,7 +176,9 @@ Page.defaultProps = {
 }
 Page.propTypes = {
   onPageSizeChange: PropTypes.func,
-  sizer: PropTypes.bool,
+  showSizer: PropTypes.bool,
+  showTotal: PropTypes.bool,
+  showElevator: PropTypes.bool,
   sizeData: PropTypes.array,
   mini: PropTypes.bool,
   total: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

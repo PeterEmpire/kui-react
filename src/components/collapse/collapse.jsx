@@ -35,7 +35,7 @@ export default class Collapse extends Kui {
                 return React.cloneElement(child, Object.assign({}, child.props, props))
             })
         }
-        return (<div className={this.classes()}>
+        return (<div className={this.classes()} style={this.styles()}>
             {renderPanel()}
         </div>)
     }

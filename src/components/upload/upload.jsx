@@ -45,16 +45,18 @@ export default class Upload extends Kui {
     if (!file) {
       return false;
     }
+    this.props.onBeforeUpload && this.props.onAfterUpload(data)
     this.uploadFormRef.current.submit();
   }
   complite(fm, e) {
     let doc = fm.contentWindow || fm.contentDocument;
+    let data;
     try {
       if (doc.document) {
         doc = doc.document;
         let content = doc.body.textContent;
         if (content) {
-          let data = eval("(" + content + ")");
+          data = eval("(" + content + ")");
           this.props.onComplite && this.props.onComplite(data)
           this.uploadFileRef.current.value = "";
           // this.select = false;
@@ -64,9 +66,10 @@ export default class Upload extends Kui {
       }
     } catch (e) {
       let msg = e.message.indexOf("cross-origin") >= 0 ? "不支持跨域上传!" : "上传文件格式不支持！";
-
+      data = e.message
       Message.error(msg);
     }
+    this.props.onAfterUpload && this.props.onAfterUpload(data)
   }
   componentDidMount() {
     const fm = this.uploadIframeRef.current
@@ -88,7 +91,7 @@ export default class Upload extends Kui {
       }
       return childs
     }
-    return (<div className={this.classes()} onClick={this.changeFile.bind(this)}>
+    return (<div className={this.classes()} onClick={this.changeFile.bind(this)} style={this.styles()}>
       {children}
       <div className="k-upload-form">
         <iframe frameBorder="0" name={`k-upload-iframe-${span}`} style={{ display: 'none' }} ref={this.uploadIframeRef}></iframe>
@@ -96,9 +99,7 @@ export default class Upload extends Kui {
           style={{ display: 'none' }} ref={this.uploadFormRef}
           target={`k-upload-iframe-${span}`}>
           <input type="file" name={name} id={id} onChange={(e) => this.upload(e)} ref={this.uploadFileRef} />
-          {
-            renderData()
-          }
+          {renderData()}
         </form>
       </div>
     </div>)

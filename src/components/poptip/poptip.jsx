@@ -128,7 +128,7 @@ export default class Poptip extends Kui {
   }
   render() {
     let { children, placement, transfer, title, confirm, content, cancelText, okText } = this.props
-    return (<div className="k-poptip" onMouseEnter={this.mouseHandle.bind(this)} onMouseLeave={this.mouseHandle.bind(this)} >
+    return (<div className={this.className('k-poptip')} style={this.styles()} onMouseEnter={this.mouseHandle.bind(this)} onMouseLeave={this.mouseHandle.bind(this)} >
       <div className="k-poptip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>

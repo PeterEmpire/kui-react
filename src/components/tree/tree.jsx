@@ -80,7 +80,7 @@ export default class Tree extends Kui {
   render() {
     let data = this.state.data || []
     let { checkbox } = this.props
-    return (<div className="k-tree">
+    return (<div className={this.className("k-tree")} style={this.styles()}>
       {
         data.map((item, index) => {
           item._pid = index;

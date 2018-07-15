@@ -30,7 +30,7 @@ export default class Steps extends Kui {
         return React.cloneElement(child, Object.assign({}, child.props, props))
       })
     }
-    return (<div className={this.classes()}>{renderStep()}</div>)
+    return (<div className={this.classes()} style={this.styles()}>{renderStep()}</div>)
   }
 }
 Steps.defaultProps = {

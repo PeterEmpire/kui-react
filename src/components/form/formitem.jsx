@@ -129,7 +129,7 @@ export default class FormItem extends Kui {
         }))
       })
     }
-    return (<div className={this.classes()}>
+    return (<div className={this.classes()} style={this.styles()}>
       {label && <label style={this.styles(this.labelStyles())} className="k-form-item-label">{label}</label>}
       <div className="k-form-item-content" style={this.styles(this.contentStyles())}>
         {renderItem()}

@@ -95,7 +95,7 @@ export default class TreeNode extends Kui {
       }
     }
     return (
-      <ul ref="children" className="k-tree-children">
+      <ul className={this.className("k-tree-children")} style={this.styles()}>
         <li>
           <span className={this.arrowClass()} onClick={this.handelExpand.bind(this)}>
             <i className={!data.loading ? 'k-ion-arrow-right-b' : 'k-ion-load-c k-load-loop'}></i>

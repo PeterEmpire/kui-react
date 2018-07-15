@@ -10,7 +10,7 @@ export default class Card extends Kui{
     }
     render(){
         let {icon,title,body,extra,children} = this.props
-        return (<div className={this.classes()}>
+        return (<div className={this.classes()} style={this.styles()}>
         <div className="k-card-head">
             {icon && <Icon type={icon} />}
             <p>{title}</p>

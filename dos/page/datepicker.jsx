@@ -193,7 +193,7 @@ export default class datepicker extends React.Component {
               <td>YYYY-MM-DD</td>
             </tr>
             <tr>
-              <td>change</td>
+              <td>onChange</td>
               <td>默认值改变之后的回调，返回当前选择的时间，字符串</td>
               <td>Function</td>
               <td>-</td>

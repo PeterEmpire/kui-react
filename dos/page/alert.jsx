@@ -70,7 +70,7 @@ export default class alert extends React.Component {
               <td>false</td>
             </tr>
             <tr>
-              <td>close</td>
+              <td>onClose</td>
               <td>关闭时触发的回调函数 </td>
               <td>Function </td>
               <td>-</td>

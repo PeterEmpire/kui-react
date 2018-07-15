@@ -193,7 +193,7 @@ export default class ColorPicker extends Kui {
           onClick={() => this.updataValue(color)}></li>)
       })
     }
-    return (<div className={this.classes()} >
+    return (<div className={this.classes()} style={this.styles()}>
       {/* 颜色显示小方块  */}
       <div onClick={this.toggleDrop.bind(this)} ref={this.relRef}>
         <div className="k-color-button" style={{ backgroundColor: showColor }}></div>

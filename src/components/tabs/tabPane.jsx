@@ -13,14 +13,14 @@ export default class TabPane extends Kui {
     let { width } = this.props
     return width ? { width: `${width}px` } : {};
   }
-  componentDidMount(){
+  componentDidMount() {
     this.context.Tabs.addItem(this)
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.context.Tabs.removeItem(this)
   }
   render() {
-    return <div className="k-tabs-tabpane" style={this.styles(this.paneStyle())}>
+    return <div className={this.className('k-tabs-tabpane')} style={this.styles(this.paneStyle())}>
       {this.props.children}
     </div>
   }

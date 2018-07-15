@@ -173,7 +173,7 @@ export default class menu extends React.Component {
               <td>240</td>
             </tr>
             <tr>
-              <td>select</td>
+              <td>onSelect</td>
               <td>选择菜单（Menu.Item）时触发,返回name</td>
               <td>Function</td>
               <td>-</td>

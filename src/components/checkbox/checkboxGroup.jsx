@@ -39,7 +39,7 @@ export default class CheckboxGroup extends Kui {
 
   render() {
 
-    return (<div className={this.className('k-checkbox-group')}>
+    return (<div className={this.className('k-checkbox-group')} style={this.styles()}>
       {
         React.Children.map(this.props.children, child => {
           if (!child || child.type !== Checkbox) {

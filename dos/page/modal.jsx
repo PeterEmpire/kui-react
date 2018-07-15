@@ -171,7 +171,7 @@ export default class modal extends Component {
               <td>-</td>
             </tr>
             <tr>
-              <td>close</td>
+              <td>onClose</td>
               <td>窗口关闭的回调</td>
               <td>Function</td>
               <td>-</td>

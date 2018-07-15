@@ -10,7 +10,7 @@ export default class TimeLineItem extends Kui {
     return icon ? [`k-ion-${icon}`] : ["k-ion-ios-circle-outline"];
   }
   render() {
-    return (<li className="k-time-line-item">
+    return (<li className={this.className('k-time-line-item')} style={this.styles()}>
       <div className="k-time-line-dot" style={this.styles(this.colorStyles())}>
         {this.props.dot || <i className={this.className(this.classes())}></i>}
       </div>

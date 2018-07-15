@@ -24,10 +24,19 @@ module.exports = merge(webpackBaseConfig, {
         libraryTarget: 'umd',
     },
     externals: {
-        "react": 'React',
-        'react-dom': 'ReactDOM',
+        'react': {
+            root: 'React',
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'react'
+        },
+        'react-dom': {
+            root: 'ReactDOM',
+            commonjs: 'react-dom',
+            commonjs2: 'react-dom',
+            amd: 'react-dom'
+        },
         'classnames': 'classnames',
-        'router': 'react-router-dom'
     },
     performance: {
         hints: false

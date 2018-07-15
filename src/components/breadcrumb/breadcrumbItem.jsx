@@ -9,7 +9,7 @@ export default class BreadcrumbItem extends Kui {
     render() {
         let { children, icon, separator } = this.props
         return (
-            <span className="k-breadcrumb-item">
+            <span className={this.className('k-breadcrumb-item')} style={this.styles()}>
                 <span className="k-breadcrumb-link" onClick={this.toPath.bind(this)}>
                     {icon && <Icon type={icon} />}
                     {children}

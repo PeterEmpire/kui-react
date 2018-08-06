@@ -30,7 +30,7 @@ export default class Tooltip extends Kui {
     }
     setTimeout(() => {
       let x = this.props.placement;
-      let dom = this.dom.current;
+      let dom = this.domRef.current;
       let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
       let scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
       if (!dom) return;

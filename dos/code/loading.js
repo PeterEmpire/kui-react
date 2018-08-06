@@ -30,7 +30,7 @@ ReactDOM.render() {
 code.theme = `import { Button,Loading } from 'react-kui';
 loading(type) {
   Loading.start(type);
-  setTimeout(() => { this.finish();  }, 3000);
+  setTimeout(() => { Loading.finish();  }, 3000);
 }
 ReactDOM.render() {
   return (

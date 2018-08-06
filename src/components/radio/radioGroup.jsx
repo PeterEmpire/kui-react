@@ -5,7 +5,7 @@ export default class RadioGroup extends Kui {
   constructor(props) {
     super(props)
     this.state = {
-      data: props.value || ''
+      value: props.value || ''
     }
   }
   getChildContext() {
@@ -13,29 +13,29 @@ export default class RadioGroup extends Kui {
       RadioGroup: this
     }
   }
-  onChange(label, checked) {
-    if (checked) {
-      this.setState({ data: label })
-      if (this.props.onChange) this.props.onChange(label)
-      this.props.onFormItemChange && this.props.onFormItemChange(label)
-    }
+  onChange(value) {
+    this.setState({ data: value })
+    if (this.props.onChange) this.props.onChange(value)
+    this.props.onFormItemChange && this.props.onFormItemChange(value)
   }
   componentWillReceiveProps(props) {
     if (props.value != this.props.value) {
       this.setState({
-        data: props.value
+        value: props.value
       })
     }
   }
   render() {
-    return <div className={this.className('k-radio-group')}>
+    return <div className={this.className('k-radio-group')} style={this.styles()}>
       {
         React.Children.map(this.props.children, (child, index) => {
           if (!child || child.type != Radio) return null;
-          let label = child.props.label || child.props.children
+          // let label = child.props.label || child.props.children
+          let value = child.props.value
+          let checked = this.state.value == value && value !== undefined && value !== null && value !== ''
           return React.cloneElement(child, Object.assign({}, child.props, {
-            checked: child.props.checked || (this.state.data == label && label !== undefined && label !== null && label !== ''),
-            onChange: this.onChange.bind(this, label)
+            checked: checked,
+            onChange: this.onChange.bind(this, value)
           }))
         })
       }

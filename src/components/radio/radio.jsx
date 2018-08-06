@@ -5,12 +5,12 @@ export default class Radio extends Kui {
   constructor(props) {
     super(props)
     this.state = {
-      checked: props.checked
+      checked: props.checked,
+      value: props.value
     }
   }
   onChange(e) {
     const checked = e.target.checked;
-
     if (checked) {
       if (this.props.onChange) {
         this.props.onChange(checked);
@@ -56,5 +56,6 @@ Radio.propTypes = {
   checked: PropTypes.bool,
   name: PropTypes.string,
   label: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func
 } 

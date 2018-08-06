@@ -115,6 +115,7 @@ export default class Modal extends Kui {
   clickMaskToClose(e) {
     if (!this.modalRef.current.contains(e.target) && !this.props.isMove) {
       this.setState({ visible: false })
+      this.props.onClose && this.props.onClose();
     }
   }
   componentDidMount() {

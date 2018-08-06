@@ -8,7 +8,7 @@ export default class radio extends Component {
     super(props)
     this.state = {
       checked: false,
-      data: "苹果🍎",
+      value: "3",
     }
   }
   testChange(value) {
@@ -18,15 +18,16 @@ export default class radio extends Component {
     this.setState({ checked: !this.state.checked })
   }
   onClear() {
-    this.setState({ data: '' })
+    this.setState({ value: '' })
   }
   onSelect() {
-    this.setState({ data: '苹果🍎' })
+    this.setState({ value: '0' })
   }
   onChangeGroup(value) {
-    this.setState({ data: value })
+    this.setState({ value })
   }
   render() {
+    let { value, } = this.state
     return <div>
       <h2>Radio 单选框</h2>
       <h3>代码示例</h3>
@@ -34,7 +35,7 @@ export default class radio extends Component {
         <Col span="12">
           <Demo title="基础" layout="vertical">
             <div>
-              <span>{this.state.checked.toString()}</span><br/>
+              <span>{this.state.checked.toString()}</span><br />
               <Radio checked={this.state.checked} onChange={this.testChange.bind(this)} value="1">单选</Radio>
               <Button onClick={this.testClick.bind(this)} style={{ margin: 0 }}>Click me</Button>
             </div>
@@ -57,14 +58,14 @@ export default class radio extends Component {
       </Row >
       <Demo title="组合使用">
         <div>
-          <p>{this.state.data}</p>
-          <Radio.Group value={this.state.data} onChange={this.onChangeGroup.bind(this)}>
-            <Radio label="苹果🍎"></Radio>
-            <Radio label="橘子🍊"></Radio>
-            <Radio label="香蕉🍌"></Radio>
-            <Radio label="栗子🌰"></Radio>
-            <Radio label="葡萄🍇"></Radio>
-            <Radio label="梨子🍐" disabled></Radio>
+          <p>选中的值：{value}</p>
+          <Radio.Group value={this.state.value} onChange={this.onChangeGroup.bind(this)}>
+            <Radio value="0" label="苹果🍎"></Radio>
+            <Radio value="1" label="橘子🍊"></Radio>
+            <Radio value="2" label="香蕉🍌"></Radio>
+            <Radio value="3" label="栗子🌰"></Radio>
+            <Radio value="4" label="葡萄🍇"></Radio>
+            <Radio value="5" label="梨子🍐" disabled></Radio>
           </Radio.Group>
           <Button onClick={this.onClear.bind(this)}>清除</Button>
           <Button onClick={this.onSelect.bind(this)}> 选中苹果</Button >
@@ -91,14 +92,14 @@ export default class radio extends Component {
             </tr>
             <tr>
               <td>value</td>
-              <td>单选框的值</td>
-              <td>string,number,boolean</td>
+              <td>单选框的值,只在组合使用时有效</td>
+              <td>string | number</td>
               <td>false</td>
             </tr>
             <tr>
               <td>label</td>
-              <td>单选框的值</td>
-              <td> String | Number</td>
+              <td>显示的文字值</td>
+              <td>string </td>
               <td>-</td>
             </tr>
             <tr>
@@ -128,13 +129,13 @@ export default class radio extends Component {
             </tr>
             <tr>
               <td>value</td>
-              <td>只在单独使用时有效。</td>
-              <td>Boolean</td>
-              <td>false</td>
+              <td>组合使用时的值</td>
+              <td>string，number</td>
+              <td>-</td>
             </tr>
             <tr>
               <td>onChange</td>
-              <td>在选项状态发生改变时触发，返回当前选中的项</td>
+              <td>在选项状态发生改变时触发，返回当前选中的项的值</td>
               <td>Function</td>
               <td>-</td>
             </tr>

@@ -2,12 +2,12 @@ import React from 'react'
 import { Kui, PropTypes } from '../kui'
 export default class TimeLineItem extends Kui {
   colorStyles() {
-    let color = this.color;
+    let color = this.props.color;
     return color ? { color: color } : {};
   }
   classes() {
-    let icon = this.icon;
-    return icon ? [`k-ion-${icon}`] : ["k-ion-ios-circle-outline"];
+    let icon = this.props.icon;
+    return icon ? [`k-ion-${icon}`] : ["k-ion-ios-radio-button-off"];
   }
   render() {
     return (<li className={this.className('k-time-line-item')} style={this.styles()}>

@@ -35,7 +35,7 @@ export default class Tag extends Kui {
                 <span className="k-tag-text">
                     {children}
                 </span>
-                {closeable && <i className="k-ion-android-close" onClick={this.onClose.bind(this)} />}
+                {closeable && <i className="k-ion-md-close" onClick={this.onClose.bind(this)} />}
             </div>
         </Transition>)
     }

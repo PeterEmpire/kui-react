@@ -4,7 +4,7 @@ import Col from './col'
 export default class Row extends Kui {
   gutterStyles() {
     let style = {};
-    if (this.props.gutter !== 0) {
+    if (this.props.gutter > 0) {
       style = {
         marginLeft: this.props.gutter / -2 + "px",
         marginRight: this.props.gutter / -2 + "px"
@@ -16,7 +16,7 @@ export default class Row extends Kui {
     return <div className={this.className(['k-row'])} style={this.styles(this.gutterStyles())}>
       {
         React.Children.map(this.props.children, child => {
-          if (!child || child.type !== Col) {
+          if (child && child.type == Col) {
             return React.cloneElement(child, Object.assign({}, child.props, { gutter: this.props.gutter }))
           }
           else return child

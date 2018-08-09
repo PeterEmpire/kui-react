@@ -46,7 +46,7 @@ export default class SubMenu extends Kui {
     return (<li className={this.classes()} onMouseOver={this.openMenu.bind(this)} onMouseOut={this.closeMenu.bind(this)}>
       <div className="k-menu-title" onClick={this.onClick.bind(this)} >
         {this.props.title}
-        <i className="k-ion-ios-arrow-down"></i>
+        <i className="k-ion-ios-arrow-down k-menu-arrow"></i>
       </div>
       <Collapse show={this.state.visible}>
         <ul className="k-menu-dropdown" >

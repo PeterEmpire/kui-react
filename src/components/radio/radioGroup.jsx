@@ -1,6 +1,7 @@
 import React from 'react'
 import { Kui, PropTypes } from '../kui'
 import Radio from './radio'
+import RadioButton from './radioButton'
 export default class RadioGroup extends Kui {
   constructor(props) {
     super(props)
@@ -29,14 +30,26 @@ export default class RadioGroup extends Kui {
     return <div className={this.className('k-radio-group')} style={this.styles()}>
       {
         React.Children.map(this.props.children, (child, index) => {
-          if (!child || child.type != Radio) return null;
-          // let label = child.props.label || child.props.children
-          let value = child.props.value
-          let checked = this.state.value == value && value !== undefined && value !== null && value !== ''
-          return React.cloneElement(child, Object.assign({}, child.props, {
-            checked: checked,
-            onChange: this.onChange.bind(this, value)
-          }))
+          if (child && child.type == Radio) {
+            let value = child.props.value
+            let checked = this.state.value == value && value !== undefined && value !== null && value !== ''
+            return React.cloneElement(child, Object.assign({}, child.props, {
+              checked: checked,
+              disabled: child.props.disabled || this.props.disabled,
+              onChange: this.onChange.bind(this, value)
+            }))
+          } else if (child && child.type == RadioButton) {
+            let value = child.props.value
+            let checked = this.state.value == value && value !== undefined && value !== null && value !== ''
+            return React.cloneElement(child, Object.assign({}, child.props, {
+              actived: checked,
+              mini: this.props.mini,
+              disabled: child.props.disabled || this.props.disabled,
+              onChange: this.onChange.bind(this, value)
+            }))
+          } else {
+            return child
+          }
         })
       }
     </div>
@@ -44,7 +57,9 @@ export default class RadioGroup extends Kui {
 }
 RadioGroup.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  mini: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 

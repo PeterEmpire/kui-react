@@ -136,13 +136,13 @@ export default class Page extends Kui {
     return (<div className={this.className()} style={this.styles()}>
       <div className={this.classes()}>
         <ul className="k-pager">
-          <li className="k-pager-item" onClick={this.prePage.bind(this)}><span><Icon type="ios-arrow-left" /></span></li>
+          <li className="k-pager-item" onClick={this.prePage.bind(this)}><span><Icon type="ios-arrow-back" /></span></li>
           {pageCount > 0 && <li className={this.className(['k-pager-item', { ['active']: page == 1 }])} onClick={this.toPage.bind(this, 1)}><span >1</span></li>}
-          {showPrevMore && <li className="k-pager-item k-pager-more"><span ><Icon type="more" /></span></li>}
+          {showPrevMore && <li className="k-pager-item k-pager-more"><span ><Icon type="ios-more" /></span></li>}
           {renderPager()}
-          {showNextMore && <li className="k-pager-item k-pager-more"><span ><Icon type="more" /></span></li>}
+          {showNextMore && <li className="k-pager-item k-pager-more"><span ><Icon type="ios-more" /></span></li>}
           {pageCount > 1 && <li className={this.className(['k-pager-item', { ['active']: page == pageCount }])} onClick={this.toPage.bind(this, pageCount)}><span >{pageCount}</span></li>}
-          <li className="k-pager-item" onClick={this.nextPage.bind(this)}><span><Icon type="ios-arrow-right" /></span></li>
+          <li className="k-pager-item" onClick={this.nextPage.bind(this)}><span><Icon type="ios-arrow-forward" /></span></li>
         </ul >
         {
           showSizer && <div className="k-page-sizer" >

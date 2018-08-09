@@ -15,12 +15,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
   mode: 'production',
   entry: {
-    index: ['./dos/app.jsx'],
-    // index: path.resolve(__dirname, '../dos/main.js'),
+    index: ['./docs/app.jsx'],
+    // index: path.resolve(__dirname, '../docs/main.js'),
     vendors: ['react', 'react-dom', 'react-router-dom',]
   },
   output: {
-    path: path.resolve(__dirname, '../dos-html'),
+    path: path.resolve(__dirname, '../docs-html'),
     filename: 'js/[name].[hash:5].js',
     publicPath: '/',
     chunkFilename: 'js/[name].[chunkhash:5].js',
@@ -41,7 +41,7 @@ module.exports = merge(webpackBaseConfig, {
       },
       // {
       //   test: /\.js[x]$/, exclude: /node_modules/, loader: 'babel-loader',
-      //   include: [path.resolve(__dirname, '../dos'),]
+      //   include: [path.resolve(__dirname, '../docs'),]
       // },
     ]
   },
@@ -73,11 +73,11 @@ module.exports = merge(webpackBaseConfig, {
     new MiniCssExtractPlugin({ filename: "css/[name].[hash:5].css" }),
     // new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
-      favicon: path.join(__dirname, '../dos/assets/kui-react.png'),
+      favicon: path.join(__dirname, '../docs/assets/kui-react.png'),
       // 生成html文件的名字，路径和生产环境下的不同，要与修改后的publickPath相结合，否则开启服务器后页面空白
       filename: 'index.html',
       // 源文件，路径相对于本文件所在的位置 
-      template: path.resolve(__dirname, '../dos/index.html'),
+      template: path.resolve(__dirname, '../docs/index.html'),
       // 需要引入entry里面的哪几个入口，如果entry里有公共模块，记住一定要引入
       // chunks: ['index', 'vendors'],
       // 要把<script>标签插入到页面哪个标签里(body|true|head|false)

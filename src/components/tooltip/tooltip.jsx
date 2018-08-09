@@ -69,7 +69,7 @@ export default class Tooltip extends Kui {
           break;
         case "left-top":
           left = l - dom.offsetWidth - 10;
-          top = pos.top;
+          top = t;
           break;
         case "left-bottom":
           left = l - dom.offsetWidth - 10;
@@ -81,7 +81,7 @@ export default class Tooltip extends Kui {
           break;
         case "right-top":
           left = l + rel.offsetWidth + 10;
-          top = pos.top;
+          top = t;
           break;
         case "right-bottom":
           left = l + rel.offsetWidth + 10;
@@ -110,7 +110,7 @@ export default class Tooltip extends Kui {
       <div className="k-tooltip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>
-      <Transfer transfer={transfer} onScroll={this.handleScroll}>
+      <Transfer transfer={transfer}>
         <Transition name="fade" show={this.state.visible} >
           <div className="k-tooltip-dom" style={this.domStyles()} ref={this.domRef} k-placement={placement}>
             <div className="k-poptip-arrow"></div>

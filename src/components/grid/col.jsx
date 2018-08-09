@@ -4,8 +4,8 @@ export default class Col extends Kui {
   colStyles() {
     let style = {};
     let p = this.props.gutter;
-    if (p !== 0) {
-      style = { paddingLeft: p / 2 + "px", paddingRight: p / 2 + "px" };
+    if (p >0) {
+      style = { paddingLeft: p / 2 , paddingRight: p / 2 };
     }
     return style;
   }

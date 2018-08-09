@@ -98,7 +98,7 @@ export default class TreeNode extends Kui {
       <ul className={this.className("k-tree-children")} style={this.styles()}>
         <li>
           <span className={this.arrowClass()} onClick={this.handelExpand.bind(this)}>
-            <i className={!data.loading ? 'k-ion-arrow-right-b' : 'k-ion-load-c k-load-loop'}></i>
+            <i className={!data.loading ? 'k-ion-ios-arrow-forward' : 'k-ion-ios-sync k-load-loop'}></i>
           </span>
           {checkbox && <Checkbox disabled={data.disabled} checked={data.checked} onChange={this.handelCheck.bind(this)} indeterminate={data.indeterminate} />}
           {data.icon && <span><Icon type={data.icon} /></span>}

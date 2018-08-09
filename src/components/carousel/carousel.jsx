@@ -131,10 +131,10 @@ export default class Carousel extends Kui {
       {!this.props.vertical &&
         <React.Fragment>
           <span className="k-carousel-arrow-left" onClick={this.setCurrent.bind(this, 'left')}>
-            <Icon type="chevron-left" />
+            <Icon type="ios-arrow-back" />
           </span>
           <span className="k-carousel-arrow-right" onClick={this.setCurrent.bind(this, 'right')} >
-            <Icon type="chevron-right" />
+            <Icon type="ios-arrow-forward" />
           </span>
         </React.Fragment>
       }

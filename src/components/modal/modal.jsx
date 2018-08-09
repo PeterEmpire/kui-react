@@ -24,10 +24,10 @@ export default class Modal extends Kui {
   getIcon() {
     let { icon } = this.props
     let icons = {
-      info: "information-circled",
-      error: "android-cancel",
-      success: "checkmark-circled",
-      warning: "android-alert"
+      info: "ios-information-circle",
+      error: "ios-close-circle",
+      success: "ios-checkmark-circle",
+      warning: "ios-alert"
     };
     return this.className([
       "k-toast-icon",
@@ -157,7 +157,7 @@ export default class Modal extends Kui {
     return <div className="k-modal-wrap" onClick={this.clickMaskToClose.bind(this)} style={this.styles()}>
       <div className="modal" ref={this.modalRef} style={this.styles(this.modalStyles())}>
         <div className="k-modal-content">
-          <a className="k-modal-close" onClick={this.onClose.bind(this)}><Icon type="android-close" /></a>
+          <a className="k-modal-close" onClick={this.onClose.bind(this)}><Icon type="md-close" /></a>
           {this.props.type == 'modal' && <div className="k-modal-header" style={this.styles(this.headerStyle())}
             onMouseDown={this.onMouseDown.bind(this)}>
             <div className="k-modal-header-inner">{title}</div>

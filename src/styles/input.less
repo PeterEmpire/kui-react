@@ -51,6 +51,16 @@
     }
 }
 
+.k-input-icon-left {
+    [class^="k-ion"] {
+      left: 0;
+      &+.k-input {
+        padding-left: 32px;
+        padding-right: 0;
+      }
+    }
+  }
+  
 .k-input-clearable {
     position: absolute;
     top: 0;
@@ -61,7 +71,7 @@
     text-align: center; //   display: none;
     cursor: pointer;
     &::before {
-        content: "\F406";
+        content: "\f14e";
         font-family: Ionicons;
         font-size: 15px;
         position: absolute;

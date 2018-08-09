@@ -57,7 +57,7 @@ export default class BackTop extends Kui {
         <Transition show={this.state.visible}>
           <div className="k-backtop" onClick={this.onClick.bind(this)} style={this.styles(this.Styles())}>
             {this.props.children ? this.props.children : <div className="k-backtop-content">
-              <Icon type="chevron-up" />
+              <Icon type="md-arrow-round-up" />
             </div>}
           </div>
         </Transition>

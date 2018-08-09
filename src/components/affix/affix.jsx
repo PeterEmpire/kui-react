@@ -70,11 +70,11 @@ export default class Affix extends Kui {
         }
     }
     componentDidMount() {
-        window.addEventListener('mousewheel', this.scroll);
+        // window.addEventListener('mousewheel', this.scroll);
         window.addEventListener('scroll', this.scroll);
     }
     componentWillUnmount() {
-        window.removeEventListener('mousewheel', this.scroll);
+        // window.removeEventListener('mousewheel', this.scroll);
         window.removeEventListener('scroll', this.scroll);
     }
     render() {

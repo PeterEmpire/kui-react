@@ -1,4 +1,5 @@
 import React from 'react'
+import RenderDOM from 'react-dom'
 import { Kui, PropTypes } from '../kui'
 import Transition from '../transition'
 export default class Notice extends Kui {
@@ -7,13 +8,14 @@ export default class Notice extends Kui {
     this.state = {
       show: false
     }
-  } 
+    this.domRef = React.createRef()
+  }
   getIcon() {
     let icons = {
-      info: "information-circled",
-      error: "android-cancel",
-      success: "checkmark-circled",
-      warning: "android-alert"
+      info: "ios-information-circle",
+      error: "ios-close-circle",
+      success: "ios-checkmark-circle",
+      warning: "ios-alert"
     };
     return `k-ion-${icons[this.props.type]}`;
   }
@@ -36,6 +38,13 @@ export default class Notice extends Kui {
     this.setState({ show: true })
   }
   onClose() {
+    let dom = this.domRef.current
+    if (dom) {
+      dom = RenderDOM.findDOMNode(dom)
+      dom.style.height = 0;
+      dom.style.paddingTop = 0;
+      dom.style.paddingBottom = 0;
+    }
     this.setState({ show: false })
     this.props.onClose && this.props.onClose()
   }
@@ -49,14 +58,11 @@ export default class Notice extends Kui {
     e.style.height = e.scrollHeight - 15 + "px";
   }
   onExited(e) {
-    e.style.height = 0;
-    e.style.paddingTop = 0;
-    e.style.paddingBottom = 0;
     this.props.onExited && this.props.onExited(e)
   }
   render() {
     let { transitionName, noticeType, content, closable, title } = this.props
-    return (<Transition name={transitionName} show={this.state.show} onExited={(e) => this.onExited(e)}>
+    return (<Transition name={transitionName} show={this.state.show} ref={this.domRef} onExited={(e) => this.onExited(e)} onEnter={(e) => this.onEnter(e)}>
       {
         noticeType == 'message' ? <div className={this.classes()} >
           <div className="k-message-notice-content">

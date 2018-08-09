@@ -16,10 +16,10 @@ export default class Alert extends Kui {
     }
     iconType() {
         let icons = {
-            info: "information-circled",
-            error: "android-cancel",
-            success: "checkmark-circled",
-            warning: "android-alert"
+            info: "ios-information-circle",
+            error: "ios-close-circle",
+            success: "ios-checkmark-circle",
+            warning: "ios-alert"
         };
         return icons[this.props.type];
     }

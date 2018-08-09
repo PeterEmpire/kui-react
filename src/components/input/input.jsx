@@ -4,7 +4,7 @@ export default class Input extends Kui {
   constructor(props) {
     super(props)
     this.state = {
-      currentValue: "",
+      currentValue: props.value || '',
       clearableShow: false,
       isFocus: false,
       isMove: false
@@ -13,12 +13,12 @@ export default class Input extends Kui {
     this.inputRef = React.createRef()
     this.textareaRef = React.createRef()
 
-    this.handleMove = this.handleMove.bind(this)
-    this.handleOut = this.handleOut.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
-    this.handleInput = this.handleInput.bind(this)
-    this.setCurrentValue = this.setCurrentValue.bind(this)
+    // this.handleMove = this.handleMove.bind(this)
+    // this.handleOut = this.handleOut.bind(this)
+    // this.handleFocus = this.handleFocus.bind(this)
+    // this.handleBlur = this.handleBlur.bind(this)
+    // this.handleInput = this.handleInput.bind(this)
+    // this.setCurrentValue = this.setCurrentValue.bind(this)
 
   }
   //compted
@@ -29,7 +29,8 @@ export default class Input extends Kui {
     return this.className([
       "k-input-wp",
       {
-        ["k-input-mini"]: this.props.mini
+        ["k-input-mini"]: this.props.mini,
+        ["k-input-icon-left"]: this.props.icon && this.props.iconAlign == 'left'
       }
     ])
   }
@@ -94,7 +95,7 @@ export default class Input extends Kui {
     this.handleEnter(e)
   }
   handleFocus(e) {
-    const { currentValue } = this.state
+    let { currentValue } = this.state
     this.setState({
       clearableShow: currentValue && currentValue.length > 0,
       isFocus: true
@@ -155,9 +156,9 @@ export default class Input extends Kui {
   }
 
   componentDidMount() {
-    this.setState({
-      currentValue: this.props.value || ''
-    })
+    // this.setState({
+    //   currentValue: this.props.value || ''
+    // })
   }
   componentWillReceiveProps(props) {
     if (props.value != this.state.currentValue) {
@@ -166,38 +167,53 @@ export default class Input extends Kui {
   }
   render() {
     let { type, icon, disabled, maxLength, name, clearable, autoFocus, number, placeholder, readOnly, rows, elementId, autoComplete, spellCheck } = this.props
+    let { currentValue, clearableShow } = this.state
     return <div style={this.inputStyles()} className={this.classes()}
-      onMouseMove={e => this.handleMove(e)} onMouseOut={e => this.handleOut(e)} >
+      onMouseMove={e => this.handleMove(e)} onMouseOut={e => this.handleOut(e)}
+    >
       {
         type !== 'textarea' ?
           <div>
-            {icon && type !== 'textarea' && <i className={this.iconClasses()} onClick={this.iconClick.bind(this)}></i>}
-            <input id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref={this.inputRef} type={type}
+            {icon && type !== 'textarea' && <i className={this.iconClasses()} onClick={(e) => this.iconClick(e)}></i>}
+            <input
+              id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref={this.inputRef} type={type}
               className={this.inputClasses()} placeholder={placeholder} disabled={disabled}
-              maxLength={maxLength} value={this.state.currentValue}
+              maxLength={maxLength}
+              value={currentValue || ''}
               readOnly={readOnly} name={name} number={number} autoFocus={autoFocus}
               onKeyUp={e => this.handleKeyup(e)}
               onKeyPress={e => this.handleKeypress(e)}
               onKeyDown={e => this.handleKeydown(e)}
-              onFocus={e => this.handleFocus(e)} onBlur={e => this.handleBlur(e)}
+              onFocus={e => this.handleFocus(e)}
+              onBlur={e => this.handleBlur(e)}
               onInput={e => this.handleInput(e)}
               onChange={e => this.handleChange(e)}
             />
-            {type != 'textarea' && clearable && this.state.clearableShow && <span className='k-input-clearable' onClick={this.clear.bind(this)} ></span >}
+            {type != 'textarea' && clearable && clearableShow && <span className='k-input-clearable' onClick={this.clear.bind(this)} ></span >}
           </div >
           :
           <textarea id={elementId} autoComplete={autoComplete} spellCheck={spellCheck} ref={this.textareaRef}
             className={this.textareaClasses()} placeholder={placeholder} disabled={disabled} rows={rows}
             maxLength={maxLength} readOnly={readOnly}
-            name={name} value={this.state.currentValue} autoFocus={autoFocus} onChange={e => this.handleChange(e)}
-            onKeyUp={e => this.handleKeyup(e)} onKeyPress={e => this.handleKeypress(e)} onKeyDown={e => this.handleKeydown(e)}
-            onFocus={e => this.handleFocus(e)} onBlur={e => this.handleBlur(e)} onInput={e => this.handleInput(e)} >
+            name={name}
+            value={currentValue || ''}
+            autoFocus={autoFocus}
+            onChange={e => this.handleChange(e)}
+            onKeyUp={e => this.handleKeyup(e)}
+            onKeyPress={e => this.handleKeypress(e)}
+            onKeyDown={e => this.handleKeydown(e)}
+            onFocus={e => this.handleFocus(e)}
+            onBlur={e => this.handleBlur(e)}
+            onInput={e => this.handleInput(e)}
+          >
           </textarea >
       }
     </div>
   }
 }
-
+Input.defaultProps = {
+  iconAlign: 'right'
+}
 Input.propTypes = {
   onKeyUp: PropTypes.func,
   onKeyPress: PropTypes.func,
@@ -210,6 +226,7 @@ Input.propTypes = {
   onIconClick: PropTypes.func,
   onFormItemChange: PropTypes.func,
 
+  iconAlign: PropTypes.oneOf(["left", 'right']),
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.string, PropTypes.number]),
   spellCheck: PropTypes.bool,
   elementId: PropTypes.string,

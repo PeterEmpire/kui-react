@@ -21,6 +21,7 @@ export default class Tabs extends Kui {
     this.rootRef = React.createRef()
     this.panesRef = React.createRef()
     this.tabsRef = React.createRef()
+    // this.setScroll.bind(this)
   }
   addItem(item) {
     let { items } = this.state
@@ -46,11 +47,12 @@ export default class Tabs extends Kui {
     };
   }
   classes() {
-    let { mini, card, sample } = this.props
+    let { mini, card, sample, animated } = this.props
     return this.className([
       "k-tabs",
       {
         ["k-tabs-mini"]: mini,
+        ["k-tabs-no-animate"]: !animated,
         ["k-tabs-card"]: card && !sample,
         ["k-tabs-sample"]: sample && !card
       }
@@ -65,7 +67,7 @@ export default class Tabs extends Kui {
   scroll(t) {
     let boxWidth = this.scrollRef.current.offsetWidth;
     let scrollWidth = this.scrollRef.current.scrollWidth;
-    let { tabLeft } = this.state
+    let { tabLeft } = this.state;
     if (t == "next") {
       let last = scrollWidth + tabLeft - boxWidth; //剩余的要偏移的长度
       if (last == 0) return;
@@ -77,6 +79,8 @@ export default class Tabs extends Kui {
     this.setState({ tabLeft })
   }
   setScroll() {
+    console.log(this.scrollRef)
+    if (!this.scrollRef) return;
     let boxWidth = this.scrollRef.current.offsetWidth;
     let scrollWidth = this.scrollRef.current.scrollWidth;
     let extraWidth = this.extraRef.current ? this.extraRef.current.offsetWidth : 0;
@@ -92,6 +96,7 @@ export default class Tabs extends Kui {
       }
     }
     itemWidth = this.rootRef.current.offsetWidth;
+
     listWidth = itemWidth * count;
     this.setState({ scrollable, tabLeft, itemWidth, listWidth })
   }
@@ -111,7 +116,8 @@ export default class Tabs extends Kui {
 
     items.splice(index, 1);
     this.panesRef.current.removeChild(this.panesRef.current.children[index]);
-    this.setState({ activeName, paneLeft })
+    this.setState({ activeName, paneLeft }, () => this.setScroll())
+
   }
   handelClick(disabled, name, index) {
     if (disabled) return;
@@ -123,10 +129,10 @@ export default class Tabs extends Kui {
     this.props.onClick && this.props.onClick(activeName)
   }
   componentWillMount() {
-    document.addEventListener('resize', this.setScroll)
+    window.addEventListener('resize',  this.setScroll.bind(this))
   }
   componentWillUnmount() {
-    document.removeEventListener('rezise', this.setScroll)
+    window.removeEventListener('rezise', this.setScroll)
   }
   componentDidMount() {
     let { left, activeName, paneLeft, itemWidth, listWidth, items } = this.state
@@ -163,7 +169,7 @@ export default class Tabs extends Kui {
           key={index} onClick={this.handelClick.bind(this, disabled, name, index)}>
           {icon && <Icon type={icon} />}
           {label}
-          {tab.props.closable && card && closable && <Icon type="android-close"
+          {tab.props.closable && card && closable && <Icon type="md-close"
             onClick={(e) => this.close(e, index, name)} />}
         </div>)
       })
@@ -189,10 +195,10 @@ export default class Tabs extends Kui {
         </div>}
         <div className={this.className(['k-tabs-nav-container', { ['k-tabs-nav-container-scroll']: scrollable }])}>
           <span className="k-tabs-tab-prev" onClick={this.scroll.bind(this, 'prev')}>
-            <Icon type="ios-arrow-left" />
+            <Icon type="ios-arrow-back" />
           </span>
           <span className="k-tabs-tab-next" onClick={this.scroll.bind(this, 'next')}>
-            <Icon type="ios-arrow-right" />
+            <Icon type="ios-arrow-forward" />
           </span>
           <div className="k-tabs-nav-wrap">
             <div className="k-tabs-nav-scroll" ref={this.scrollRef} style={this.styles(this.scrollStyle())}>
@@ -211,7 +217,10 @@ export default class Tabs extends Kui {
   }
 }
 Tabs.childContextTypes = {
-  Tabs: PropTypes.any
+  Tabs: PropTypes.any,
+}
+Tabs.defaultProps = {
+  animated: true
 }
 Tabs.propTypes = {
   onClocse: PropTypes.func,

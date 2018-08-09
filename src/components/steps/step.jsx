@@ -24,8 +24,8 @@ export default class Step extends Kui {
         {icon && <Icon type={icon}></Icon>}
         {!icon && <div className="k-step-icon-inner">
           {status != 'finish' && !icon && status != 'error' && <span>{step}</span>}
-          {!icon && status == 'finish' && <Icon type="android-done" />}
-          {!icon && status == 'error' && <Icon type="android-close" />}
+          {!icon && status == 'finish' && <Icon type="md-checkmark" />}
+          {!icon && status == 'error' && <Icon type="md-close" />}
         </div>}
       </div>
       <div className="k-step-main">

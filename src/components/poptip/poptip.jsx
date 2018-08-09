@@ -12,7 +12,7 @@ export default class Poptip extends Kui {
       top: 0
     }
     this.domRef = React.createRef()
-    this.refRef = React.createRef()
+    this.relRef = React.createRef()
   }
   classes() {
     return this.className([
@@ -30,7 +30,7 @@ export default class Poptip extends Kui {
     return style;
   }
   onHide(e) {
-    if (this.props.transfer && this.dom.current) {
+    if (this.props.transfer && this.domRef.current && this.relRef.current) {
       if (!this.domRef.current.contains(e.target) && !this.relRef.current.contains(e.target)) {
         this.setState({ visible: false })
       }
@@ -46,26 +46,27 @@ export default class Poptip extends Kui {
   }
   mouseHandle() {
     if (this.props.trigger == "hover") {
-      this.setState({ visible: !this.state.visible })
-      this.setPosition()
+      this.setState({ visible: !this.state.visible }, () => this.setPosition())
     }
   }
-  relClick() {
+  relClick(e) {
+    // e.stopPropagation();
+    // e.nativeEvent.stopImmediatePropagation();
     if (this.props.trigger == "click") {
-      this.setState({ visible: !this.state.visible })
-      this.setPosition()
+      this.setState({ visible: !this.state.visible }, () => this.setPosition())
     }
   }
   setPosition() {
-    let pos = { left: 0, top: 0 };
-    let rel = this.relRef.current && this.relRef.current.children[0] || this.relRef.current
-    if(!rel) return;
+    let pos = { left: 0, top: 0 }, rel = this.relRef.current;
+
+    if (!rel) return;
+    rel = rel.children[0] || rel
     if (this.props.transfer) {
       pos = rel.getBoundingClientRect()
     }
     setTimeout(() => {
       let x = this.props.placement;
-      let dom = this.dom.current;
+      let dom = this.domRef.current;
       let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
       let scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
       if (!dom) return;
@@ -104,7 +105,7 @@ export default class Poptip extends Kui {
           break;
         case "left-top":
           left = l - dom.offsetWidth - 10;
-          top = pos.top;
+          top = t;
           break;
         case "left-bottom":
           left = l - dom.offsetWidth - 10;
@@ -116,13 +117,14 @@ export default class Poptip extends Kui {
           break;
         case "right-top":
           left = l + rel.offsetWidth + 10;
-          top = pos.top;
+          top = t;
           break;
         case "right-bottom":
           left = l + rel.offsetWidth + 10;
           top = t - (dom.offsetHeight - rel.offsetHeight);
           break;
       }
+
       this.setState({ left, top })
     });
   }
@@ -132,12 +134,12 @@ export default class Poptip extends Kui {
       <div className="k-poptip-rel" ref={this.relRef} onClick={this.relClick.bind(this)}>
         {children}
       </div>
-      <Transfer transfer={transfer} onScroll={this.setPosition.bind(this)} onResize={this.setPosition.bind(this)} docOnClick={(e) => this.onHide(e)}>
+      <Transfer transfer={transfer} onResize={this.setPosition.bind(this)} docOnClick={(e) => this.onHide(e)}>
         <Transition name="fade" show={this.state.visible}>
           <div className={this.classes()} style={this.styles(this.popStyles())} ref={this.domRef} k-placement={placement} >
             <div className="k-poptip-arrow"></div>
             {title && <div className="k-poptip-title">
-              {confirm && <i className="k-ion-help-circled" ></i>}
+              {confirm && <i className="k-ion-ios-help-circle" ></i>}
               <span>{title}</span>
             </div>}
             <div className="k-poptip-content">

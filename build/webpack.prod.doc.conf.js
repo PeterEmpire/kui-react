@@ -73,7 +73,7 @@ module.exports = merge(webpackBaseConfig, {
     new MiniCssExtractPlugin({ filename: "css/[name].[hash:5].css" }),
     // new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
-      favicon: path.join(__dirname, '../docs/assets/kui-react.png'),
+      favicon: path.join(__dirname, '../docs/assets/favicon.png'),
       // 生成html文件的名字，路径和生产环境下的不同，要与修改后的publickPath相结合，否则开启服务器后页面空白
       filename: 'index.html',
       // 源文件，路径相对于本文件所在的位置 

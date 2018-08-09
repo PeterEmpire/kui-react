@@ -96,6 +96,9 @@ export default class Layout extends Kui {
                 <a href="//github.com/chuchur/kui-react" target="_blank">仓库代码</a>
               </li>
               <li>
+                <a href="//k-ui.xyz" target="_blank">KUI VUE</a>
+              </li>
+              <li>
                 <a href="/sponsor">支持作者</a>
               </li>
               <li>

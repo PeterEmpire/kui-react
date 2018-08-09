@@ -1,5 +1,10 @@
 
-![](https://www.chuchur.com/2018-7-2/kui-react.jpg)
+<p align="center">
+    <a href="https://react.k-ui.xyz">
+        <img width="100" src="https://k-ui.xyz/img/logo.svg">
+    </a>
+</p>
+
 ### 一枚前端UI 组件库 for React
 
 在追求完美视觉体验的同时也保证了其性能高效。
@@ -15,7 +20,7 @@
 logs：[https://react.k-ui.xyz/log](https://react.k-ui.xyz/log)
 
 #### 文档
-Docs : [https://react.k-ui.xyz](https://react.k-ui.xyz)
+Docs : [https://react.k-ui.xyz](https://react.k-ui.xyz)   
 Github: [https://github.com/chuchur/kui-react](https://github.com/chuchur/kui-react)
 
 #### 安装

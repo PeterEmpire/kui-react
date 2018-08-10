@@ -74,7 +74,7 @@ export default class log extends React.Component {
           </h3>
           <p>1.0发布，转入公测</p>
         </TimeLine.Item>
-        <TimeLine.Item icon="erlenmeyer-flask">
+        <TimeLine.Item icon="ios-flask">
           <h3> 0.0.1
           <span>2018-5-27</span>
           </h3>

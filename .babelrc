@@ -1,5 +1,18 @@
 {
-  "presets": ["es2015", "stage-3","react"],
-  "plugins": ["transform-runtime"],
+  "presets": [
+    "es2015",
+    "stage-1",
+    "react"
+  ],
+  "plugins": [
+    [
+      "transform-runtime",
+      {
+        "polyfill": true,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ]
+  ],
   "comments": false
-  }
+}

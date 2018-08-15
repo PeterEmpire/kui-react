@@ -3,7 +3,7 @@
  * 打包react 组件
  */
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') //for webpack 4
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //for webpack 4
 const path = require('path');
@@ -15,9 +15,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
   mode: 'production',
   entry: {
-    index: ['./docs/app.jsx'],
+    index: [/* 'babel-polyfill', */ './docs/app.jsx'],
     // index: path.resolve(__dirname, '../docs/main.js'),
-    vendors: ['react', 'react-dom', 'react-router-dom',]
+    // vendors: ['react', 'react-dom', 'react-router-dom',]
   },
   output: {
     path: path.resolve(__dirname, '../docs-html'),
@@ -47,11 +47,26 @@ module.exports = merge(webpackBaseConfig, {
   },
   optimization: {
     splitChunks: {
-      name(module) {
-        return (
-          module.resource && /\.js$/.test(module.resource) &&
-          module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
-        )
+      // name(module) {
+      //   return (
+      //     module.resource && /\.js$/.test(module.resource) &&
+      //     module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
+      //   )
+      // }
+      chunks: 'async',
+      minSize: 30000, //分离前的最小块文件大小，单位为字节
+      minChunks: 1, //分离前，该块被引入的次数
+      maxAsyncRequests: 5, //内层文件（第二层）按需加载时最大的并行加载数量
+      maxInitialRequests: 3, //一个入口文件可以并行加载的最大文件数量
+      name: false, //用以控制分离后代码块的命名，当存在匹配的缓存组（后面会说到）时，命名使用缓存组中的name值，若不存在则为  [来源]~[入口的key值].js  的格式
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: 'initial',  //匹配的块的类型：initial（初始块），async（按需加载的异步块），all（所有块）
+          priority: -10, //优先级
+          reuseExistingChunk: false,
+          test: /node_modules\/(.*)\.js/
+        }
       }
     },
     minimize: true,

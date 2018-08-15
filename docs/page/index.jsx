@@ -29,6 +29,9 @@ export default class Index extends Component {
                 <a href="/start">组件</a>
               </li>
               <li>
+                <a href="https://k-ui.xyz" target="_blank">KUI VUE</a>
+              </li>
+              <li>
                 <a href="//github.com/chuchur/kui-react">GITHUB</a>
               </li>
               <li>
@@ -39,19 +42,17 @@ export default class Index extends Component {
         </div>
       </header>
       <section className="index-content">
-        <div className="logo">
-          <img src={logo} />
-        </div>
+        <div className="logo">K UI</div>
         <h1>一枚高质量前端UI组件库</h1>
         <div className="btn-content">
           <Button className="start" onClick={this.start.bind(this)}>开始使用</Button>
           <Button icon="logo-github" className="github" onClick={this.github.bind(this)}>Github</Button>
         </div>
       </section>
-      <footer>
+      {/* <footer>
         <p>Copyright ©2009-2018
         <a href="http://www.chuchur.com">禅境花园</a> by chuchur 粤ICP备17111365号 </p>
-      </footer>
+      </footer> */}
     </section>)
   }
 }

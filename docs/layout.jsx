@@ -1,6 +1,7 @@
 import React from 'react'
 import { Kui, PropTypes } from '../src/components/kui'
 import logo from './assets/favicon.png'
+import vue from './assets/vue.svg'
 import code from './code/menuData'
 import { Row, Col, Menu, Badge, Select, Icon } from '../src'
 export default class Layout extends Kui {
@@ -21,7 +22,7 @@ export default class Layout extends Kui {
     if (path.indexOf('http') >= 0) {
       window.open(path)
     } else {
-      setTimeout(() => this.setState({ key: '' }),500)
+      setTimeout(() => this.setState({ key: '' }), 500)
       if (path != window.location.pathname) {
         document.scrollTop = document.documentElement.scrollTop = 0
       }
@@ -64,7 +65,8 @@ export default class Layout extends Kui {
           <Menu style={{ float: 'right' }} mode="horizontal" activeName="/install" onSelect={(path) => this.routerChange(path)}>
             <Menu.Item name="/" icon="ios-home">首页</Menu.Item>
             <Menu.Item name="/start" icon="ios-options">组件</Menu.Item>
-            <Menu.Item name="https://github.com/chuchur/kui-react/issues" icon="ios-help-circle">提问</Menu.Item>
+            <Menu.Item name="https://react.k-ui.xyz"><img src={vue} style={{height:15,margin:0}}/>KUI VUE</Menu.Item>
+            <Menu.Item name="https://github.com/chuchur/kui-react" icon="logo-github">GITHUB</Menu.Item>
             <Menu.Item name="https://www.chuchur.com" icon="ios-leaf">Blog</Menu.Item>
           </Menu>
         </header>
@@ -113,7 +115,7 @@ export default class Layout extends Kui {
           <div className="ft-right">
             <ul>
               <li>
-                <a href="//chuchur.com" target="_blank"><img src={logo} />
+                <a href="//chuchur.com" target="_blank"><img src="//chuchur.com/favicon.png" />
                   <span>chuchur</span>
                 </a>
               </li>

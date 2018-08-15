@@ -35,12 +35,12 @@ ReactDOM.render() {
   )
 }`
 
-code.static = `NoticeNotice.info(options)
-NoticeNotice.success(options)
-NoticeNotice.warning(options)
-NoticeNotice.error(options)`
+code.static = `Notice.info(options)
+Notice.success(options)
+Notice.warning(options)
+Notice.error(options)`
 
-code.destory = `NoticeNotice.open(options)
-NoticeNotice.destroy()`
+code.destory = `Notice.open(options)
+Notice.destroy()`
 
 export default code

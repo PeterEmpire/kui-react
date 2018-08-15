@@ -125,6 +125,8 @@ export default class icon extends Kui {
               </Radio.Group>
             </div>
           </div>
+          <br/>
+          <br/>
           <div className="icon-item">
             {this.getIcons(applist)}
           </div>
